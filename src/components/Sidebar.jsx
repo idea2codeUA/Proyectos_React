@@ -15,7 +15,7 @@ const SidebarLinks = () => {
 const Logo = () => {
   return (
     <div className='py-3 w-full flex flex-col items-center justify-center'>
-      <img src='logo.png' alt='Logo' className='h-16' />
+      <img src='logo.png' alt='Logo' className='h-48' />
       <span className='my-2 text-xl font-bold text-center'>Título de Mi Aplicación</span>
     </div>
   );
@@ -66,8 +66,8 @@ const SidebarRoute = ({ to, title, icon }) => {
         to={to}
         className={({ isActive }) =>
           isActive
-            ? 'sidebar-route text-white bg-indigo-700'
-            : 'sidebar-route text-gray-900 hover:text-white hover:bg-indigo-400'
+            ? 'sidebar-route text-white bg-blue-500'
+            : 'sidebar-route text-gray-900 hover:text-white hover:bg-blue-300'
         }
       >
         <div className='flex items-center'>
