@@ -18,7 +18,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
+    "build:style": "tailwind build src/styles/globals.css",
     "start": "craco start && react-scripts start",
     "dev": "craco start",
     "build": "craco build",
