@@ -7,7 +7,9 @@ import Index from 'pages/Index';
 import Page2 from 'pages/Page2';
 import IndexCategory1 from 'pages/category1/Index';
 import Category1 from 'pages/category1/CategoryPage1';
+import LandingPage from 'pages/LandingPage';
 import 'styles/globals.css';
+import "styles/JohinyStyles.css";
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -24,6 +26,7 @@ function App() {
       <UserContext.Provider value={{ userData, setUserData }}>
         <BrowserRouter>
           <Routes>
+            <Route path ="landing" element={<LandingPage/>}/>
             <Route path='/' element={<PrivateLayout />}>
               <Route path='' element={<Index />} />
               <Route path='page2' element={<Page2 />} />
