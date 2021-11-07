@@ -18,7 +18,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "node /src/index.js ",
+    "start": "craco start && react-scripts start",
     "dev": "craco start",
     "build": "craco build",
     "test": "craco test",
