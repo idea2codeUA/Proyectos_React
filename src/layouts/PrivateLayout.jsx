@@ -1,10 +1,5 @@
 import Sidebar from 'components/Sidebar';
 import { Outlet } from 'react-router';
-<<<<<<< HEAD
-import React from 'react';
-
-const PrivateLayout = () => {
-=======
 import React, { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { useMutation } from '@apollo/client';
@@ -40,7 +35,6 @@ const PrivateLayout = () => {
 
   if (loadingMutation || loadingAuth) return <div>Loading...</div>;
 
->>>>>>> 7a767c475e83c17ec93ce38d431213ae9ca3709a
   return (
     <div className='flex flex-col md:flex-row flex-no-wrap h-screen'>
       <Sidebar />
@@ -49,10 +43,7 @@ const PrivateLayout = () => {
           <Outlet />
         </div>
       </div>
-<<<<<<< HEAD
-=======
       <ToastContainer />
->>>>>>> 7a767c475e83c17ec93ce38d431213ae9ca3709a
     </div>
   );
 };
