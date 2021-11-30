@@ -24,7 +24,7 @@ import "styles/JohinyStyles.css";
 // import PrivateRoute from 'components/PrivateRoute';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://backend-idea2code.herokuapp.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
