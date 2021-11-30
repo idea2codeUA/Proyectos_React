@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from 'context/authContext';
 import PrivateComponent from './PrivateComponent';
-import logo from "Media/logo.png";
+import logo from "media/logo.png";
 
 const SidebarLinks = () => {
   return (
