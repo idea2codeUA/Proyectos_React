@@ -17,6 +17,9 @@ import Register from 'pages/auth/register';
 import Login from 'pages/auth/login';
 import { AuthContext } from 'context/authContext';
 import jwt_decode from 'jwt-decode';
+import LandingPage from 'pages/LandingPage';
+import 'styles/globals.css';
+import "styles/JohinyStyles.css";
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -70,6 +73,7 @@ function App() {
   }, [authToken]);
 
   return (
+<<<<<<< HEAD
     <ApolloProvider client={client}>
       <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
         <UserContext.Provider value={{ userData, setUserData }}>
@@ -92,6 +96,28 @@ function App() {
         </UserContext.Provider>
       </AuthContext.Provider>
     </ApolloProvider>
+=======
+    <Auth0Provider
+      domain='misiontic-concesionario.us.auth0.com'
+      clientId='WsdhjjQzDLIZEHA6ouuxXGxFONFGAQ4g'
+      redirectUri='http://localhost:3000/admin'
+      audience='api-autenticacion-concesionario-mintic'
+    >
+      <UserContext.Provider value={{ userData, setUserData }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path ="landing" element={<LandingPage/>}/>
+            <Route path='/' element={<PrivateLayout />}>
+              <Route path='' element={<Index />} />
+              <Route path='page2' element={<Page2 />} />
+              <Route path='category1' element={<IndexCategory1 />} />
+              <Route path='category1/page1' element={<Category1 />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </UserContext.Provider>
+    </Auth0Provider>
+>>>>>>> dev_Johiny
   );
 }
 
