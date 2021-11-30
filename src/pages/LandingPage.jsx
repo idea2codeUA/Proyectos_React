@@ -1,6 +1,6 @@
-import React from 'react'
-import estudiantes from "Media/Students_1.svg"
-import GoogleButton from 'react-google-button'
+import React from 'react';
+import estudiantes from "Media/Students_1.svg";
+import GoogleButton from 'react-google-button';
 const LandingPage = () => {
     return (
         <>
