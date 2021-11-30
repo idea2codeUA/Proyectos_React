@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from 'context/authContext';
 import PrivateComponent from './PrivateComponent';
+import logo from "Media/logo.png";
 
 const SidebarLinks = () => {
   return (
@@ -39,8 +40,7 @@ const Logout = () => {
 const Logo = () => {
   return (
     <div className='py-3 w-full flex flex-col items-center justify-center'>
-      <img src='logo.png' alt='Logo' className='h-48' />
-      <span className='my-2 text-xl font-bold text-center'>Título de Mi Aplicación</span>
+      <img src={logo} alt='Logo' className='h-48' />
     </div>
   );
 };
