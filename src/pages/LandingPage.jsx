@@ -1,12 +1,12 @@
 import React from 'react';
 import estudiantes from "media/students1.svg";
-import GoogleButton from 'react-google-button';
+import ButtonJ from 'components/ButtonJ';
 const LandingPage = () => {
     return (
         <>
         <div className="fixed top-0 right-4">
-        <div className="bg-gray-100 p-5 rounded-md shadow-md">
-        <GoogleButton/>
+        <div className="bg-gray-100 p-5 rounded-md shadow-md hover:bg-gray-300 hover:text-green-500">
+        <ButtonJ texto="Login" className="rounded-md px-20 text-2xl font-bold hover:bg-gray-300"/>
         </div>
         </div>
         <div className="container mx-auto items-center flex flex-col">
