@@ -9,7 +9,7 @@ import Page2 from 'pages/Page2';
 import IndexCategory1 from 'pages/category1/Index';
 import Category1 from 'pages/category1/CategoryPage1';
 import IndexUsuarios from 'pages/usuarios';
-import EditarUsuario from 'pages/usuarios/editar';
+import EditProfile from 'pages/usuarios/EditProfile';
 import 'styles/globals.css';
 import 'styles/tabla.css';
 import AuthLayout from 'layouts/AuthLayout';
@@ -20,6 +20,8 @@ import jwt_decode from 'jwt-decode';
 import LandingPage from 'pages/LandingPage';
 import 'styles/globals.css';
 import "styles/JohinyStyles.css";
+import EditarUsuario from 'pages/usuarios/EditarUsuario';
+
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -81,9 +83,10 @@ function App() {
             <Route path='/' element={<LandingPage />} />
               <Route path='/app' element={<PrivateLayout />}>
                 <Route path='' element={<Index />} />
+                <Route path='editprofile/:_id' element={<EditProfile />} />
                 <Route path='usuarios' element={<IndexUsuarios />} />
-                <Route path='usuarios/editar/:_id' element={<EditarUsuario />} />
-                <Route path='category1' element={<IndexCategory1 />} />
+                <Route path='usuarios/editarusuario/:_id' element={<EditarUsuario />} />
+                <Route path='page2' element={<IndexCategory1 />} />
                 <Route path='category1/page1' element={<Category1 />} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>

@@ -46,7 +46,7 @@ const IndexUsuarios = () => {
                       <td>{Enum_Rol[u.rol]}</td>
                       <td>{Enum_EstadoUsuario[u.estado]}</td>
                       <td>
-                        <Link to={`/usuarios/editar/${u._id}`}>
+                        <Link to={`editarusuario/${u._id}`}>
                           <i className='fas fa-pen text-yellow-600 hover:text-yellow-400 cursor-pointer' />
                         </Link>
                       </td>

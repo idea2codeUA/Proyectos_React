@@ -28,17 +28,18 @@ const Login = () => {
     if (dataMutation) {
       if (dataMutation.login.token) {
         setToken(dataMutation.login.token);
-        navigate('/');
+        navigate('/app');
       }
     }
   }, [dataMutation, setToken, navigate]);
 
   return (
     <div className='flex flex-col items-center justify-center w-full h-full p-10'>
-      <h1 className='text-xl font-bold text-gray-900'>Iniciar sesión</h1>
-      <form className='flex flex-col' onSubmit={submitForm} onChange={updateFormData} ref={form}>
-        <Input name='correo' type='email' label='Correo' required={true} />
-        <Input name='password' type='password' label='Contraseña' required={true} />
+      <div className="border-gray-800 border-4 p-24 rounded-3xl z-10 bg-white">
+      <h1 className='text-4xl font-bold text-gray-900'>Iniciar sesión</h1>
+      <form className='flex flex-col ' onSubmit={submitForm} onChange={updateFormData} ref={form}>
+        <Input name='correo' type='email' label='Correo:' required={true} />
+        <Input name='password' type='password' label='Contraseña:' required={true} />
         <ButtonLoading
           disabled={Object.keys(formData).length === 0}
           loading={mutationLoading}
@@ -49,6 +50,7 @@ const Login = () => {
       <Link to='/auth/register'>
         <span className='text-blue-700'>Regístrate</span>
       </Link>
+      </div>
     </div>
   );
 };

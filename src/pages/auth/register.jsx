@@ -34,6 +34,7 @@ const Register = () => {
 
   return (
     <div className='flex flex-col h-full w-full items-center justify-center'>
+      <div className="border-gray-800 border-4 p-20 rounded-3xl z-10 bg-white">
       <h1 className='text-3xl font-bold my-4'>Regístrate</h1>
       <form className='flex flex-col' onSubmit={submitForm} onChange={updateFormData} ref={form}>
         <div className='grid grid-cols-2 gap-5'>
@@ -54,6 +55,7 @@ const Register = () => {
       <Link to='/auth/login'>
         <span className='text-blue-700'>Inicia sesión</span>
       </Link>
+      </div>
     </div>
   );
 };

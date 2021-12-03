@@ -9,8 +9,9 @@ import { toast } from 'react-toastify';
 import { EDITAR_USUARIO } from 'graphql/usuarios/mutations';
 import DropDown from 'components/Dropdown';
 import { Enum_EstadoUsuario } from 'utils/enums';
+import "styles/JohinyStyles.css";
 
-const EditarUsuario = () => {
+const EditProfile = () => {
   const { form, formData, updateFormData } = useFormData(null);
   const { _id } = useParams();
 
@@ -54,52 +55,57 @@ const EditarUsuario = () => {
 
   return (
     <div className='flew flex-col w-full h-full items-center justify-center p-10'>
-      <Link to='/usuarios'>
+      <Link to='/app/usuarios'>
         <i className='fas fa-arrow-left text-gray-600 cursor-pointer font-bold text-xl hover:text-gray-900' />
       </Link>
-      <h1 className='m-4 text-3xl text-gray-800 font-bold text-center'>Editar Usuario</h1>
+      <h1 className='m-4 text-3xl text-gray-800 font-bold text-center'>Editar Perfil</h1>
       <form
         onSubmit={submitForm}
         onChange={updateFormData}
         ref={form}
         className='flex flex-col items-center justify-center'
       >
+        <div className="flex flex-row items-center">
         <Input
-          label='Nombre de la persona:'
+          label='Nombre:'
           type='text'
           name='nombre'
           defaultValue={queryData.Usuario.nombre}
           required={true}
+          labelstyle = "flex flex-col my-3 mx-16"
+          inputstyle = "inputj"
         />
         <Input
-          label='Apellido de la persona:'
+          label='Apellido:'
           type='text'
           name='apellido'
           defaultValue={queryData.Usuario.apellido}
           required={true}
+          labelstyle = "flex flex-col my-3 mx-16"
+          inputstyle = "inputj"
         />
+        </div>
+        <div className="flex flex-row items-center">
         <Input
-          label='Correo de la persona:'
+          label='Correo:'
           type='email'
           name='correo'
           defaultValue={queryData.Usuario.correo}
           required={true}
+          labelstyle = "flex flex-col my-3 mx-16"
+          inputstyle = "inputj"
         />
         <Input
-          label='Identificación de la persona:'
+          label='Identificación:'
           type='text'
           name='identificacion'
           defaultValue={queryData.Usuario.identificacion}
           required={true}
+          labelstyle = "flex flex-col my-3 mx-16"
+          inputstyle = "inputj"
         />
-        <DropDown
-          label='Estado de la persona:'
-          name='estado'
-          defaultValue={queryData.Usuario.estado}
-          required={true}
-          options={Enum_EstadoUsuario}
-        />
-        <span>Rol del usuario: {queryData.Usuario.rol}</span>
+        </div>
+        <span>Rol: {queryData.Usuario.rol}</span>
         <ButtonLoading
           disabled={Object.keys(formData).length === 0}
           loading={mutationLoading}
@@ -110,4 +116,4 @@ const EditarUsuario = () => {
   );
 };
 
-export default EditarUsuario;
+export default EditProfile;

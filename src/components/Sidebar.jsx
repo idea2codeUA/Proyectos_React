@@ -3,17 +3,18 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from 'context/authContext';
 import PrivateComponent from './PrivateComponent';
 import logo from "media/logo.png";
-
+import { useUser } from 'context/userContext';
+import { useNavigate } from 'react-router-dom';
 const SidebarLinks = () => {
   return (
-    <ul className='mt-12'>
+    <ul className='mt-4'>
       <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
       <PrivateComponent roleList={['ADMINISTRADOR']}>
-        <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-user' />
+        <SidebarRoute to='/app/usuarios' title='Usuarios' icon='fas fa-user' />
       </PrivateComponent>
-      <SidebarRoute to='/page2' title='Proyectos' icon='fas fa-project-diagram' />
-      <SidebarRoute to='/category1' title='Inscripciones' icon='fas fa-clipboard-list' />
-      <SidebarRoute to='/category1/page1' title='Avances' icon='fas fa-file-upload' />
+      <SidebarRoute to='/app/page2' title='Proyectos' icon='fas fa-project-diagram' />
+      <SidebarRoute to='/app/category1' title='Inscripciones' icon='fas fa-clipboard-list' />
+      <SidebarRoute to='/app/category1/page1' title='Avances' icon='fas fa-file-upload' />
       <Logout />
     </ul>
   );
@@ -46,6 +47,10 @@ const Logo = () => {
 };
 
 const Sidebar = () => {
+
+  const {userData,setUserData} = useUser();
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(true);
   return (
     <div className='flex flex-col md:flex-row flex-no-wrap md:h-full'>
@@ -54,6 +59,7 @@ const Sidebar = () => {
       <div className='sidebar hidden md:flex'>
         <div className='px-8'>
           <Logo />
+          <div className=" pl-9 font-semibold text-lg w-full flex items-center">¡Hola {userData.nombre}!<i onClick={()=>navigate(`/app/editprofile/${userData._id}`)} className="fas fa-user-edit pl-2 hover:text-green-600 cursor-pointer"></i></div>
           <SidebarLinks />
         </div>
       </div>
