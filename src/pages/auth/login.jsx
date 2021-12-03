@@ -38,8 +38,8 @@ const Login = () => {
       <div className="border-gray-800 border-4 p-24 rounded-3xl z-10 bg-white">
       <h1 className='text-4xl font-bold text-gray-900'>Iniciar sesión</h1>
       <form className='flex flex-col ' onSubmit={submitForm} onChange={updateFormData} ref={form}>
-        <Input name='correo' type='email' label='Correo:' required={true} />
-        <Input name='password' type='password' label='Contraseña:' required={true} />
+        <Input name='correo' type='email' label='Correo:' required={true} labelstyle = "flex flex-col my-3" inputstyle = "inputDaniel" />
+        <Input name='password' type='password' label='Contraseña:' required={true} labelstyle = "flex flex-col my-3" inputstyle = "inputDaniel" />
         <ButtonLoading
           disabled={Object.keys(formData).length === 0}
           loading={mutationLoading}

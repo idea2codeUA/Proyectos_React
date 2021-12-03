@@ -8,7 +8,7 @@ const ButtonJ = (props) => {
 
     return (
         <div>
-            <button onClick={() => navigate("auth/login")} className={props.className}><span className="buttonJ_style">{props.texto}</span></button>
+            <button onClick={() => navigate(props.route)} className={props.className}><span className="buttonJ_style">{props.texto}</span></button>
         </div>
     )
 }

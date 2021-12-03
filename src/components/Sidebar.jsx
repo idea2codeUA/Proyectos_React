@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const SidebarLinks = () => {
   return (
     <ul className='mt-4'>
-      <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
+      <SidebarRoute to='/app' title='Inicio' icon='fas fa-home' />
       <PrivateComponent roleList={['ADMINISTRADOR']}>
         <SidebarRoute to='/app/usuarios' title='Usuarios' icon='fas fa-user' />
       </PrivateComponent>
@@ -93,10 +93,11 @@ const SidebarRoute = ({ to, title, icon }) => {
   return (
     <li>
       <NavLink
+        end
         to={to}
         className={({ isActive }) =>
           isActive
-            ? 'sidebar-route text-white bg-blue-500'
+            ? 'sidebar-route text-white bg-blue-600'
             : 'sidebar-route text-gray-900 hover:text-white hover:bg-blue-300'
         }
       >
