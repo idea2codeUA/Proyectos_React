@@ -23,8 +23,10 @@ const ModalJ = (props) => {
                     <Box sx={style}>
                     <h1 className="justify-self-center text-center font-bold text-3xl">{props.titulo}</h1>
                     <div className="flex justify-between my-8">
-                        <button className="p-6  bg-green-500 rounded-md hover:bg-green-800 text-gray-200 font-extrabold">Aceptar</button>
-                        <button onClick={props.closeModal} className="p-6  bg-red-500 rounded-md hover:bg-red-800 text-gray-200 font-extrabold">cancelar</button>
+                        <button onClick={() => {props.closeModal()
+                            props.setAcceptTrigger(true)}} className="p-6  bg-green-500 rounded-md hover:bg-green-800 text-gray-200 font-extrabold">Aceptar</button>
+                        <button onClick={() => {props.closeModal()
+                        props.setCancelTrigger(true)}} className="p-6  bg-red-500 rounded-md hover:bg-red-800 text-gray-200 font-extrabold">cancelar</button>
                     </div>
                     </Box>
             </Modal>

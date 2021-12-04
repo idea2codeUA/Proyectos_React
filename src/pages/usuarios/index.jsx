@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USUARIOS } from 'graphql/usuarios/queries';
+import {EDITAR_USUARIO} from "graphql/usuarios/mutations"
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enums';
@@ -8,44 +9,23 @@ import PrivateRoute from 'components/PrivateRoute';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import ModalJ from 'components/ModalJ';
-
-const Dropdown = (props) => {
-
-  const defaultValue = props.defaultValue
-  const optionsSelect = [...Object.entries(props.options)];
-  const [selectedValue, setSelectedValue] = useState(defaultValue);  
-  useEffect(() => {
-      setSelectedValue(defaultValue);
-    }, [defaultValue]);
-
-  return (
-      <select
-        name={props.name}
-        className={props.className}
-        value={selectedValue}
-        onChange={(e) => {
-          setSelectedValue(e.target.value)
-          props.openModal()}}
-      >
-        {optionsSelect.map((o) => {
-          return (
-            <option key={nanoid()} value={o[0]}>
-              {o[1]}
-            </option>
-          );
-        })};
-      </select>
-  );
-};
+import TableRowJ from 'components/TableRowJ';
+import { useMutation } from '@apollo/client';
 
 const IndexUsuarios = () => {
   //trae los usuarios de la base de datos
   const { data, error, loading } = useQuery(GET_USUARIOS);
 
+  // crea la funcion que se quiera ejecutar en el backend en algun moemnto dado
+  const [editarEstadoUsuario, { data: mutationData, loading: mutationLoading, error: mutationError }] =
+    useMutation(EDITAR_USUARIO); 
+
   //estados del modal
     const [open,setOpen] = useState(false);
     const closeModal = () => setOpen(false);
     const openModal = () => setOpen(true);
+    const [cancelTrigger,setCancelTrigger] = useState(false);
+    const [acceptTrigger,setAcceptTrigger] = useState(false);
 
   useEffect(() => {
     if (error) {
@@ -74,24 +54,14 @@ const IndexUsuarios = () => {
           <tbody>
                 {data.Usuarios.map((u) => {
                   return (
-                    <tr key={u._id}>
-                      <td>{u.nombre}</td>
-                      <td>{u.apellido}</td>
-                      <td>{u.correo}</td>
-                      <td>{u.identificacion}</td>
-                      <td>{Enum_Rol[u.rol]}</td>
-                      <td><Dropdown options={Enum_EstadoUsuario} defaultValue={u.estado} name={"estado"} openModal={openModal} className="border-2 border-blue-500 p-1"/></td>
-                      <td>
-                        <Link to={`editarusuario/${u._id}`}>
-                          <i className='fas fa-pen text-yellow-600 hover:text-yellow-400 cursor-pointer' />
-                        </Link>
-                      </td>
-                    </tr>
+                    <TableRowJ key={u._id} user={u} options={Enum_EstadoUsuario} Enum_Rol={Enum_Rol}
+                    cancelTrigger={cancelTrigger} setCancelTrigger={setCancelTrigger} acceptTrigger={acceptTrigger} setAcceptTrigger={setAcceptTrigger}
+                     open={open} openModal={openModal} closeModal={closeModal} backendAction={editarEstadoUsuario} />
                   );
                 })}
           </tbody>
         </table>
-        <ModalJ open={open} closeModal={closeModal} titulo="¿Autorizas al usuario?"/>
+        <ModalJ open={open} closeModal={closeModal} titulo={"¿Autorizas al usuario?"} setCancelTrigger={setCancelTrigger} setAcceptTrigger ={setAcceptTrigger}/>
       </div>
     </PrivateRoute>
   );
