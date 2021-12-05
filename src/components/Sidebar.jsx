@@ -12,7 +12,7 @@ const SidebarLinks = () => {
       <PrivateComponent roleList={['ADMINISTRADOR']}>
         <SidebarRoute to='/app/usuarios' title='Usuarios' icon='fas fa-user' />
       </PrivateComponent>
-      <SidebarRoute to='/app/page2' title='Proyectos' icon='fas fa-project-diagram' />
+      <SidebarRoute to='/app/proyectos' title='Proyectos' icon='fas fa-project-diagram' />
       <SidebarRoute to='/app/category1' title='Inscripciones' icon='fas fa-clipboard-list' />
       <SidebarRoute to='/app/category1/page1' title='Avances' icon='fas fa-file-upload' />
       <Logout />

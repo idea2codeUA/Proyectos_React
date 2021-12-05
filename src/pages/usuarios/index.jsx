@@ -38,7 +38,6 @@ const IndexUsuarios = () => {
   return (
     <PrivateRoute roleList={['ADMINISTRADOR']}>
       <div>
-        Datos Usuarios:
         <table className='tabla'>
           <thead>
             <tr>
