@@ -31,6 +31,8 @@ const MiniCard = (props) => {
     }
 
     //minicards especiales
+
+    //minicards de aprobacion y estado
     if(props.campo == "Aprobación" || props.campo =="Estado")
     {
     return(
@@ -43,6 +45,32 @@ const MiniCard = (props) => {
         </div>
     )
     }
+    //minicard de fase
+    if(props.item == "EN_DESARROLLO")
+    {
+        return(
+        <div className="cursor-pointer">
+        <label className="flex text-center justify-center self-center projectCardsFont font-bold">{props.campo}</label>
+        <div className={`border-2 border-yellow-500 bg-yellow-500 m-1 p-1 rounded-md shadow-xl hover:bg-blue-500 hover:border-blue-500`} onClick={() => {props.openModal()
+        props.setProyectSelected(true)}}>
+            <span>{props.item}</span>
+        </div>
+        </div>
+        )
+    }
+    if(props.item == "TERMINADO")
+    {
+        return(
+        <div>
+        <label className="flex text-center justify-center self-center projectCardsFont font-bold">{props.campo}</label>
+        <div className={`border-2 border-indigo-500 bg-indigo-500 m-1 p-1 rounded-md shadow-xl`} onClick={() => {props.openModal()
+        props.setProyectSelected(true)}}>
+            <span>{props.item}</span>
+        </div>
+        </div>
+        )
+    }
+    //minicards normales
     else{
         return(
         <div>
@@ -62,8 +90,11 @@ const ProjectCard = (props) => {
 
     //estado del campo aprobado
     const [aprobadoState,setAprobadoState] = useState(props.proyecto.aprobado);
-    //estado del campo de del estado del proyecto
+    //estado del campo de estado del proyecto
     const [estadoproyecto,setEstadoProyecto] = useState(props.proyecto.estado);
+
+    //estado del campo de fase del proyecto
+    const [faseproyecto,setFaseProyecto] = useState(props.proyecto.fase);
 
     // estado proyecto seleccionado?
     const [proyectselected,setProyectSelected] = useState(false);
@@ -158,6 +189,31 @@ const ProjectCard = (props) => {
     }
     },[props.cancelTrigger2])
 
+    //efectos del modal de fase
+    useEffect(() => {
+        if(props.acceptTrigger3 == true && proyectselected == true)
+        {
+            setFaseProyecto("TERMINADO");
+        editEstadoProyecto({
+            variables:{
+                id: props.proyecto._id, 
+                nombre: props.proyecto.nombre, 
+                presupuesto: props.proyecto.presupuesto, 
+                fechaInicio: props.proyecto.fechaInicio, 
+                fechaFin: props.proyecto.fechaFin,
+                aprobado: aprobadoState, 
+                estado: estadoproyecto, 
+                fase: "TERMINADO", 
+                lider: props.proyecto.lider._id
+            }
+        })
+        props.setAcceptTrigger3(false);
+        setProyectSelected(false);
+    }
+    },[props.acceptTrigger3])
+
+    
+
 
     return(
         <div className="border-2 border-blue-500 p-5 m-10 rounded-xl shadow-xl max-w-2xl">
@@ -165,7 +221,7 @@ const ProjectCard = (props) => {
             <div className="flex flex-wrap justify-center">
             <MiniCard item={aprobadoState} campo={"Aprobación"} openModal={props.openModal} setProyectSelected={setProyectSelected}/>
             <MiniCard item={estadoproyecto} campo={"Estado"} openModal={props.openModal2} setProyectSelected={setProyectSelected}/>
-            <MiniCard item={props.proyecto.fase} campo={"Fase"}/>
+            <MiniCard item={faseproyecto} campo={"Fase"} openModal={props.openModal3} setProyectSelected={setProyectSelected}/>
             <br></br>
             <MiniCard item={props.proyecto.fechaInicio.slice(0,10)} campo={"Fecha Inicio"}/>
             <MiniCard item={props.proyecto.fechaFin.slice(0,10) } campo={"Fecha Fin"}/>
