@@ -6,10 +6,8 @@ import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import Index from 'pages/Index';
 import Page2 from 'pages/Page2';
-import IndexCategory1 from 'pages/category1/Index';
-import Category1 from 'pages/category1/CategoryPage1';
 import IndexUsuarios from 'pages/usuarios';
-import EditProfile from 'pages/usuarios/EditProfile';
+import EditarUsuario from 'pages/usuarios/EditarUsuario';
 import 'styles/globals.css';
 import 'styles/tabla.css';
 import AuthLayout from 'layouts/AuthLayout';
@@ -20,9 +18,8 @@ import jwt_decode from 'jwt-decode';
 import LandingPage from 'pages/LandingPage';
 import 'styles/globals.css';
 import "styles/JohinyStyles.css";
-import EditarUsuario from 'pages/usuarios/EditarUsuario';
-import IndexProjectos from 'pages/proyectos/IndexProjectos';
-import InscLandingPage from 'pages/Inscripciones/LandingPage'
+import InscLandingPage from 'pages/Inscripciones/InscLandingPage';
+
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -81,15 +78,12 @@ function App() {
         <UserContext.Provider value={{ userData, setUserData }}>
           <BrowserRouter>
             <Routes>
-            <Route path='/' element={<LandingPage />} />
-              <Route path='/app' element={<PrivateLayout />}>
+              <Route path='/' element={<PrivateLayout />}>
                 <Route path='' element={<Index />} />
-                <Route path='editprofile/:_id' element={<EditProfile />} />
-                <Route path='usuarios' element={<IndexUsuarios />} />
-                <Route path='usuarios/editarusuario/:_id' element={<EditarUsuario />} />
-                <Route path='proyectos' element={<IndexProjectos />} />
-                <Route path='category1/page1' element={<Category1 />} />
-                <Route path='Inscripciones' element={< InscLandingPage />} />
+                <Route path='/usuarios' element={<IndexUsuarios />} />
+                <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
+                <Route path='/landing' element={<LandingPage />} />
+                <Route path='/Inscripciones' element={<InscLandingPage/>} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />
