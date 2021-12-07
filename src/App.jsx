@@ -22,6 +22,7 @@ import 'styles/globals.css';
 import "styles/JohinyStyles.css";
 import EditarUsuario from 'pages/usuarios/EditarUsuario';
 import IndexProjectos from 'pages/proyectos/IndexProjectos';
+import InscLandingPage from 'pages/Inscripciones/LandingPage'
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -88,6 +89,7 @@ function App() {
                 <Route path='usuarios/editarusuario/:_id' element={<EditarUsuario />} />
                 <Route path='proyectos' element={<IndexProjectos />} />
                 <Route path='category1/page1' element={<Category1 />} />
+                <Route path='Inscripciones' element={< InscLandingPage />} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />
