@@ -15,16 +15,22 @@ const MiniCard = (props) => {
     {
      border_color = "border-yellow-500";
     }
+
+    //estados negativos
     if(props.item == "NO_APROBADO" || props.item == "INACTIVO" )
     {
      border_color = "border-red-500";
      bg_color = "bg-red-500";
     }
+
+    //estados positivos
     if(props.item == "APROBADO" || props.item == "ACTIVO" )
     {
      border_color = "border-green-500";
      bg_color = "bg-green-500";
     }
+
+    //minicards especiales
     if(props.campo == "Aprobación" || props.campo =="Estado")
     {
     return(
@@ -57,6 +63,8 @@ const ProjectCard = (props) => {
     //estado del campo aprobado
     const [aprobadoState,setAprobadoState] = useState(props.proyecto.aprobado);
     //estado del campo de del estado del proyecto
+    const [estadoproyecto,setEstadoProyecto] = useState(props.proyecto.estado);
+
     // estado proyecto seleccionado?
     const [proyectselected,setProyectSelected] = useState(false);
 
@@ -106,6 +114,49 @@ const ProjectCard = (props) => {
     },[props.cancelTrigger])
 
     //efectos del modal de estado
+    useEffect(() => {
+        if(props.acceptTrigger2 == true && proyectselected == true)
+        {
+            setEstadoProyecto("ACTIVO");
+        editEstadoProyecto({
+            variables:{
+                id: props.proyecto._id, 
+                nombre: props.proyecto.nombre, 
+                presupuesto: props.proyecto.presupuesto, 
+                fechaInicio: props.proyecto.fechaInicio, 
+                fechaFin: props.proyecto.fechaFin,
+                aprobado: aprobadoState, 
+                estado: "ACTIVO", 
+                fase: props.proyecto.fase, 
+                lider: props.proyecto.lider._id
+            }
+        })
+        props.setAcceptTrigger2(false);
+        setProyectSelected(false);
+    }
+    },[props.acceptTrigger2])
+
+    useEffect(() => {
+        if(props.cancelTrigger2 == true && proyectselected == true )
+        {
+        setEstadoProyecto("INACTIVO");
+        editEstadoProyecto({
+            variables:{
+                id: props.proyecto._id, 
+                nombre: props.proyecto.nombre, 
+                presupuesto: props.proyecto.presupuesto, 
+                fechaInicio: props.proyecto.fechaInicio, 
+                fechaFin: props.proyecto.fechaFin,
+                aprobado: aprobadoState, 
+                estado: "INACTIVO", 
+                fase: props.proyecto.fase, 
+                lider: props.proyecto.lider._id
+            }
+        })
+        props.setCancelTrigger2(false);
+        setProyectSelected(false);
+    }
+    },[props.cancelTrigger2])
 
 
     return(
@@ -113,7 +164,7 @@ const ProjectCard = (props) => {
             <h1 className="text-center align-top text-2xl  projectCardsFont">{props.proyecto.nombre}</h1>
             <div className="flex flex-wrap justify-center">
             <MiniCard item={aprobadoState} campo={"Aprobación"} openModal={props.openModal} setProyectSelected={setProyectSelected}/>
-            <MiniCard item={props.proyecto.estado} campo={"Estado"}/>
+            <MiniCard item={estadoproyecto} campo={"Estado"} openModal={props.openModal2} setProyectSelected={setProyectSelected}/>
             <MiniCard item={props.proyecto.fase} campo={"Fase"}/>
             <br></br>
             <MiniCard item={props.proyecto.fechaInicio.slice(0,10)} campo={"Fecha Inicio"}/>

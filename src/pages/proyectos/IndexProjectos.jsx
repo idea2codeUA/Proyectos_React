@@ -23,8 +23,8 @@ const IndexProjectos = () => {
 
     //estados del modal de Estado
     const [open2,setOpen2] = useState(false);
-    const closeModal2 = () => setOpen(false);
-    const openModal2 = () => setOpen(true);
+    const closeModal2 = () => setOpen2(false);
+    const openModal2 = () => setOpen2(true);
     const [cancelTrigger2,setCancelTrigger2] = useState(false);
     const [acceptTrigger2,setAcceptTrigger2] = useState(false);
 
@@ -39,13 +39,13 @@ const IndexProjectos = () => {
             return(
             <ProjectCard key={proyecto._id} proyecto={proyecto} openModal={openModal} openModal2={openModal2} 
             acceptTrigger={acceptTrigger} setAcceptTrigger={setAcceptTrigger} cancelTrigger={cancelTrigger} setCancelTrigger={setCancelTrigger}
-            acceptTrigger2={acceptTrigger} setAcceptTrigger2={setAcceptTrigger} cancelTrigger2={cancelTrigger} setCancelTrigger2={setCancelTrigger}/>
+            acceptTrigger2={acceptTrigger2} setAcceptTrigger2={setAcceptTrigger2} cancelTrigger2={cancelTrigger2} setCancelTrigger2={setCancelTrigger2}/>
             );
         })}
         <ModalJ open={open} closeModal={closeModal} titulo={"¿Que quieres hacer con este proyecto?"}
          textbutton1="Aprobar" textbutton2="No Aprobar" setCancelTrigger={setCancelTrigger} setAcceptTrigger={setAcceptTrigger}/>
          <ModalJ open={open2} closeModal={closeModal2} titulo={"¿Que quieres hacer con este proyecto?"}
-         textbutton1="Activar" textbutton2="No Aprobar" setCancelTrigger={setCancelTrigger2} setAcceptTrigger={setAcceptTrigger2}/>   
+         textbutton1="Activar" textbutton2="Desactivar" setCancelTrigger={setCancelTrigger2} setAcceptTrigger={setAcceptTrigger2}/>   
         </div>
     )
     }
