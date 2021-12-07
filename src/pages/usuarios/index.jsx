@@ -60,7 +60,8 @@ const IndexUsuarios = () => {
                 })}
           </tbody>
         </table>
-        <ModalJ open={open} closeModal={closeModal} titulo={"¿Autorizas al usuario?"} setCancelTrigger={setCancelTrigger} setAcceptTrigger ={setAcceptTrigger}/>
+        <ModalJ open={open} closeModal={closeModal} titulo={"¿Autorizas al usuario?"} textbutton1={"Aceptar"} textbutton2={"Cancelar"}
+        setCancelTrigger={setCancelTrigger} setAcceptTrigger ={setAcceptTrigger}/>
       </div>
     </PrivateRoute>
   );

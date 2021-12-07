@@ -10,7 +10,10 @@ query Proyectos {
   fase
   fechaFin
   fechaInicio
-  presupuesto  
+  presupuesto
+  lider{
+    _id
+  }  
   }
 }
 `;

@@ -31,7 +31,7 @@ const EditProfile = () => {
     e.preventDefault();
     delete formData.rol;
     editarUsuario({
-      variables: { _id, ...formData },
+      variables: { _id,rol: queryData.Usuario.rol,estado:queryData.Usuario.estado, ...formData },
     });
   };
 
