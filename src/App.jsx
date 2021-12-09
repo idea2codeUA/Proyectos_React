@@ -22,8 +22,10 @@ import 'styles/globals.css';
 import "styles/JohinyStyles.css";
 import EditarUsuario from 'pages/usuarios/EditarUsuario';
 import IndexProjectos from 'pages/proyectos/IndexProjectos';
+import InscLandingPage from 'pages/Inscripciones/InscLandingPage';
+import EstudianteProyectos from "pages/proyectos/EstudianteProyectos";
 
-// import PrivateRoute from 'components/PrivateRoute';
+
 
 const httpLink = createHttpLink({
   uri: 'https://backend-idea2code.herokuapp.com/graphql',
@@ -87,6 +89,8 @@ function App() {
                 <Route path='usuarios' element={<IndexUsuarios />} />
                 <Route path='usuarios/editarusuario/:_id' element={<EditarUsuario />} />
                 <Route path='proyectos' element={<IndexProjectos />} />
+                <Route path='proyectos_estudiante' element={<EstudianteProyectos />} />
+                <Route path='Inscripciones' element={<InscLandingPage/>} />
                 <Route path='category1/page1' element={<Category1 />} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>

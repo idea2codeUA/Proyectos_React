@@ -7,6 +7,8 @@ import { useUser } from 'context/userContext';
 import ModalJ from 'components/ModalJ';
 import { useState } from 'react';
 const IndexProjectos = () => {
+    
+    
     //QUERY proyectos
     const {data,error,loading} = useQuery(GET_PROYECTOS);
     //data del usario logueado
@@ -34,8 +36,6 @@ const IndexProjectos = () => {
     const openModal3 = () => setOpen3(true);
     const [cancelTrigger3,setCancelTrigger3] = useState(false);
     const [acceptTrigger3,setAcceptTrigger3] = useState(false);
-
-
     if (loading) return <div>Cargando....</div>;
 
     if(userData.rol == "ADMINISTRADOR")

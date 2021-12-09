@@ -18,4 +18,25 @@ query Proyectos {
 }
 `;
 
-export {GET_PROYECTOS};
+const GET_PROYECTOS_INSCRIPCIONES =gql`
+query Proyectos {
+  Proyectos {
+    _id
+    nombre
+    presupuesto
+    fechaInicio
+    fechaFin
+    aprobado
+    estado
+    fase
+    inscripciones {
+      estado
+      estudiante {
+        _id
+      }
+    }
+  }
+}
+` 
+
+export {GET_PROYECTOS,GET_PROYECTOS_INSCRIPCIONES};
