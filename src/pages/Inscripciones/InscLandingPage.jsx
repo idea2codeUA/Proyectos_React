@@ -1,50 +1,13 @@
 import React from 'react';
-import Input from 'components/Input';
-import ButtonLoading from 'components/ButtonLoading';
-
 
 const InscLandingPage = () => {
     return (
-        <>
-        <div className="container mx-auto items-center flex flex-col">
-        <div className="text-center text-7xl font-medium m-4 mt-14">    
-        <h1 className="landing_page_title">
-        Aqui podras inscribirte a proyectos<br></br>
-        afines a tus interes<br></br>
+        <div className="flex flex-wrap justify-center">    
+        <h1 className="text-center text-3xl font-medium m-4 mt-7 landing_page_title">
+        Aquí podras administrar los proyectos a los que te has escrito
         </h1>
+
         </div>
-        <div className="text-center text-5xl font-medium">   
-            </div>   
-            <br/>   
-            <form
-            className='container mx-auto flex flex-col items-center justify-center'
-          >
-            <Input
-              label='Ingresa el nombre del proyecto al que te inscribiras'
-              type='text'
-              name='nombre'
-            />
-            <Input
-              label='Apellido de la persona:'
-              type='text'
-              name='apellido'
-            />
-            <Input
-              label='Correo de la persona:'
-              type='email'
-              name='correo'
-            />
-            <Input
-              label='Identificación de la persona:'
-              type='text'
-              name='identificacion'
-            />
-            <ButtonLoading className="place-self-center"
-              text='Confirmar'
-            />
-          </form>
-        </div>
-        </>
     )
 }
 
