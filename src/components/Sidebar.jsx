@@ -19,7 +19,7 @@ const SidebarLinks = () => {
       <SidebarRoute to='/app/proyectos_estudiante' title='Proyectos' icon='fas fa-project-diagram' />
       </PrivateComponent>
       <SidebarRoute to='/app/Inscripciones' title='Proyectos Inscritos' icon='fas fa-clipboard-list' />
-      <SidebarRoute to='/app/category1/page1' title='Avances' icon='fas fa-file-upload' />
+      <SidebarRoute to='/app/avances' title='Avances' icon='fas fa-file-upload' />
       <Logout />
     </ul>
   );
