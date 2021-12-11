@@ -1,7 +1,7 @@
 import React from 'react';
 
-const IndexCategory1 = () => {
+const IndexAvances = () => {
   return <div>Index Category1</div>;
 };
 
-export default IndexCategory1;
+export default IndexAvances;

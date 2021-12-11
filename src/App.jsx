@@ -6,8 +6,7 @@ import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import Index from 'pages/Index';
 import Page2 from 'pages/Page2';
-import IndexCategory1 from 'pages/category1/Index';
-import Category1 from 'pages/category1/CategoryPage1';
+import Avances from 'pages/avances/Avances';
 import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
 import EditProfile from 'pages/usuarios/EditProfile';
 import 'styles/globals.css';
@@ -25,7 +24,7 @@ import IndexProjectos from 'pages/proyectos/IndexProjectos';
 import InscLandingPage from 'pages/Inscripciones/InscLandingPage';
 import EstudianteProyectos from "pages/proyectos/EstudianteProyectos";
 import LiderProyectos from 'pages/proyectos/LiderProyectos';
-import Avances from 'pages/proyectos/Avances';
+
 import InscripcionesPendientes from 'pages/Inscripciones/InscripcionesPendientes';
 
 const httpLink = createHttpLink({
@@ -95,7 +94,6 @@ function App() {
                 <Route path='proyectos_lider' element={<LiderProyectos />} />
                 <Route path='Inscripciones' element={<InscLandingPage/>} />
                 <Route path='Inscripciones_Pendientes' element={<InscripcionesPendientes/>} />
-                <Route path='category1/page1' element={<Category1 />} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />
