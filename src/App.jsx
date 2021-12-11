@@ -26,6 +26,7 @@ import InscLandingPage from 'pages/Inscripciones/InscLandingPage';
 import EstudianteProyectos from "pages/proyectos/EstudianteProyectos";
 import LiderProyectos from 'pages/proyectos/LiderProyectos';
 import Avances from 'pages/proyectos/Avances';
+import InscripcionesPendientes from 'pages/Inscripciones/InscripcionesPendientes';
 
 const httpLink = createHttpLink({
   uri: 'https://backend-idea2code.herokuapp.com/graphql',
@@ -93,6 +94,7 @@ function App() {
                 <Route path='proyectos_estudiante' element={<EstudianteProyectos />} />
                 <Route path='proyectos_lider' element={<LiderProyectos />} />
                 <Route path='Inscripciones' element={<InscLandingPage/>} />
+                <Route path='Inscripciones_Pendientes' element={<InscripcionesPendientes/>} />
                 <Route path='category1/page1' element={<Category1 />} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>
