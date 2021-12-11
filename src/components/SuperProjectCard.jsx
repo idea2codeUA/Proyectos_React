@@ -34,12 +34,25 @@ const MiniCard = (props) => {
     //minicards especiales
 
     //minicards de aprobacion y estado
+    
+    if(props.campo == "Avances")
+    {
+        return(
+            <div className='cursor-pointer' onClick={() => props.navigateAvances(`/app/proyectos/avances/${props.proyectoId}`)}>
+            <label className="flex text-center justify-center self-center projectCardsFont font-bold">{props.campo}</label>
+            <div className={`border-2 border-blue-600 m-1 p-1 rounded-md shadow-xl bg-blue-400 hover:bg-blue-500`}>
+                <span>{props.item}</span>
+            </div>
+            </div>
+        )
+    }
+    
     if(props.campo =="Estado")
     {
     return(
         <div>
         <label className="flex text-center justify-center self-center projectCardsFont font-bold">{props.campo}</label>
-        <div className={`border-2 ${border_color} m-1 p-1 rounded-md shadow-xl hover:bg-blue-500 hover:border-blue-500 ${bg_color}`}>
+        <div className={`border-2 ${border_color} m-1 p-1 rounded-md shadow-xl ${bg_color}`}>
             <span>{props.item}</span>
         </div>
         </div>
@@ -94,10 +107,11 @@ const SuperProjectCard = (props) => {
         <div className="border-2 border-blue-500 p-5 m-10 rounded-xl shadow-xl max-w-2xl">
             <h1 className="text-center align-top text-2xl  projectCardsFont">{props.proyecto.nombre}</h1>
             <div className="flex flex-wrap justify-center">
-            <div className="border-2 border-blue-500 p-5 m-10 rounded-xl shadow-xl max-w-2xl">{props.proyecto.descripcion}</div>
+            <div className="border-2 border-blue-500 p-5 m-10 rounded-xl shadow-xl max-w-2xl">{props.proyecto.objetivos[0].descripcion}</div>
             <MiniCard item={props.proyecto.estado} campo={"Estado"}/>
             <MiniCard item={props.proyecto.fase} campo={"Fase"}/>
             <br></br>
+            <MiniCard item={"Ver Avances"} campo ={"Avances"} navigateAvances={props.navigateAvances} proyectoId ={props.proyecto._id}/>
             <MiniCard item={props.proyecto.fechaInicio.slice(0,10)} campo={"Fecha Inicio"}/>
             <MiniCard item={props.proyecto.fechaFin.slice(0,10) } campo={"Fecha Fin"}/>
             <MiniCard item={props.proyecto.presupuesto} campo={"Presupuesto"}/>
@@ -106,4 +120,4 @@ const SuperProjectCard = (props) => {
     )
 }
 
-export default ProjectCardLider
+export default SuperProjectCard;
