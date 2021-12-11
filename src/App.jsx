@@ -6,7 +6,7 @@ import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import Index from 'pages/Index';
 import Page2 from 'pages/Page2';
-import Avances from 'pages/avances/Avances';
+import Avances from 'pages/avances/avance';
 import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
 import EditProfile from 'pages/usuarios/EditProfile';
 import 'styles/globals.css';
@@ -24,7 +24,7 @@ import IndexProjectos from 'pages/proyectos/IndexProjectos';
 import InscLandingPage from 'pages/Inscripciones/InscLandingPage';
 import EstudianteProyectos from "pages/proyectos/EstudianteProyectos";
 import LiderProyectos from 'pages/proyectos/LiderProyectos';
-import Avances from 'pages/proyectos/Avances';
+import AvancesP from 'pages/proyectos/Avances';
 
 const httpLink = createHttpLink({
   uri: 'https://backend-idea2code.herokuapp.com/graphql',
@@ -88,7 +88,7 @@ function App() {
                 <Route path='usuarios' element={<IndexUsuarios />} />
                 <Route path='usuarios/editarusuario/:_id' element={<EditarUsuario />} />
                 <Route path='proyectos' element={<IndexProjectos />} />
-                <Route path='proyectos/avances/:_id' element={<Avances />} />
+                <Route path='proyectos/avances/:_id' element={<AvancesP />} />
                 <Route path='proyectos_estudiante' element={<EstudianteProyectos />} />
                 <Route path='proyectos_lider' element={<LiderProyectos />} />
                 <Route path='Inscripciones' element={<InscLandingPage/>} />

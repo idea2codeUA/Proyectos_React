@@ -4,6 +4,9 @@ import { GET_USUARIOS } from 'graphql/usuarios/queries';
 import {EDITAR_USUARIO} from "graphql/usuarios/mutations";
 import { GET_ESTUDIANTES } from 'graphql/usuarios/queries';
 import { GET_PROYECTOS } from 'graphql/proyectos/queries';
+import { CREAR_AVANCE } from 'graphql/avances/mutations';
+import { EDITAR_AVANCE } from 'graphql/avances/mutations';
+import { GET_AVANCES_PROYECTO } from 'graphql/avances/queries';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enums';
@@ -12,6 +15,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import ModalJ from 'components/ModalJ';
 import TableRowJ from 'components/TableRowJ';
+import TableRowAvance from 'components/TableRowAvance';
 import { useMutation } from '@apollo/client';
 import { useUser } from 'context/userContext';
 
@@ -22,11 +26,13 @@ const Avances = () => {
 
   //decide que query hacer segun el rol del usuario
   let QUERY = null;
+  let QUERY1 = null;
   let queryData = [];
   let queryData1 = [];
   const Enum_NO_Autorizado = {NO_AUTORIZADO: 'No autorizado'}
   const Enum_Autorizado = {AUTORIZADO: 'autorizado'}
-  QUERY = userData.rol == "ADMINISTRADOR" ? GET_USUARIOS : GET_ESTUDIANTES ;
+  QUERY = userData.rol == "LIDER" ? GET_USUARIOS : GET_ESTUDIANTES ;
+  QUERY1 = userData.rol == "ESTUDIANTE" ? GET_PROYECTOS : GET_PROYECTOS ;
 
   // trae todos los usuarios o solo los estudiantes
   const { data, error, loading } = useQuery(QUERY);
@@ -35,8 +41,8 @@ const Avances = () => {
   const [editarEstadoUsuario, { data: mutationData, loading: mutationLoading, error: mutationError }] =
     useMutation(EDITAR_USUARIO);
 
-  // Proyectos
-  const {data1,error1,loading1} = useQuery(GET_PROYECTOS);
+  // Proyectos por estudiante
+  const {data1,error1,loading1} = useQuery(QUERY1);
 
   //estados del modal
     const [open,setOpen] = useState(false);
@@ -56,78 +62,52 @@ const Avances = () => {
   { 
     //mete la data del query en una variable mas manejable
     queryData = data[Object.keys(data)[0]];
+    queryData1 = data[Object.keys(data)[0]];
       // borra la opcion no autorizado del dropdown y filtra de la data los usuarios no autorizados
       if(userData.rol == "LIDER")  
       {
         delete Enum_EstadoUsuario.NO_AUTORIZADO;
       }
 
+      //Pendiente eliminar estudiante, solo es para pruebas de visualización
       return (
-        <PrivateRoute roleList={['ADMINISTRADOR',"LIDER"]}>
-          <div>
-            <table className='tabla'>
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Apellidos</th>
-                  <th>Correo</th>
-                  <th>Identificación</th>
-                  <th>Rol</th>
-                  <th>Estado</th>
-                  <th>Editar</th>
-                </tr>
-              </thead>
-              <tbody>
-                    {
-                    queryData.map((u) => {
-                      if(userData.rol == "LIDER" && u.estado == "NO_AUTORIZADO")
-                      {
-                        return (
-                          <TableRowJ key={u._id} user={u} options={Enum_NO_Autorizado} Enum_Rol={Enum_Rol}
-                          cancelTrigger={cancelTrigger} setCancelTrigger={setCancelTrigger} acceptTrigger={acceptTrigger} setAcceptTrigger={setAcceptTrigger}
-                           open={open} openModal={openModal} closeModal={closeModal} backendAction={editarEstadoUsuario} />
-                        );
-                      }
-                      else if (userData.rol == "LIDER" && u.estado == "AUTORIZADO"){
-                        return (
-                          <TableRowJ key={u._id} user={u} options={Enum_Autorizado} Enum_Rol={Enum_Rol}
-                          cancelTrigger={cancelTrigger} setCancelTrigger={setCancelTrigger} acceptTrigger={acceptTrigger} setAcceptTrigger={setAcceptTrigger}
-                           open={open} openModal={openModal} closeModal={closeModal} backendAction={editarEstadoUsuario} />
-                        );
-                      }
-                      else{
-                        return(
-                        <TableRowJ key={u._id} user={u} options={Enum_EstadoUsuario} Enum_Rol={Enum_Rol}
-                          cancelTrigger={cancelTrigger} setCancelTrigger={setCancelTrigger} acceptTrigger={acceptTrigger} setAcceptTrigger={setAcceptTrigger}
-                           open={open} openModal={openModal} closeModal={closeModal} backendAction={editarEstadoUsuario} />
-                          )
-                      }
-                    })}
-              </tbody>
-            </table>
-            <ModalJ open={open} closeModal={closeModal} titulo={"¿Autorizas al usuario?"} textbutton1={"Aceptar"} textbutton2={"Cancelar"}
-            setCancelTrigger={setCancelTrigger} setAcceptTrigger ={setAcceptTrigger}/>
-          </div>
-
-
-
+        <PrivateRoute roleList={['ADMINISTRADOR',"LIDER", "ESTUDIANTE"]}> 
+          
           <div>
             <table className='tabla'>
               <thead>
                 <tr>
                   <th>Nombre Proyecto</th>
                   <th>Avances</th>
+                  <th>Agregar Avance</th>
                 </tr>
               </thead>
               <tbody>
-                    
-
-              {data1.royectos.map((proyecto) => {
-                  return(
-                  <tr key={proyecto._id}/>
-                  );
-              })}
-
+                {
+                    queryData.map((u) => {
+                      if(userData.rol == "LIDER" && u.estado == "NO_AUTORIZADO")
+                      {
+                        return (
+                          <TableRowAvance key={u._id} user={u} options={Enum_NO_Autorizado} Enum_Rol={Enum_Rol}
+                          cancelTrigger={cancelTrigger} setCancelTrigger={setCancelTrigger} acceptTrigger={acceptTrigger} setAcceptTrigger={setAcceptTrigger}
+                           open={open} openModal={openModal} closeModal={closeModal} backendAction={editarEstadoUsuario} />
+                        );
+                      }
+                      else if (userData.rol == "LIDER" && u.estado == "AUTORIZADO"){
+                        return (
+                          <TableRowAvance key={u._id} user={u} options={Enum_Autorizado} Enum_Rol={Enum_Rol}
+                          cancelTrigger={cancelTrigger} setCancelTrigger={setCancelTrigger} acceptTrigger={acceptTrigger} setAcceptTrigger={setAcceptTrigger}
+                           open={open} openModal={openModal} closeModal={closeModal} backendAction={editarEstadoUsuario} />
+                        );
+                      }
+                      else{
+                        return(
+                        <TableRowAvance key={u._id} user={u} options={Enum_EstadoUsuario} Enum_Rol={Enum_Rol}
+                          cancelTrigger={cancelTrigger} setCancelTrigger={setCancelTrigger} acceptTrigger={acceptTrigger} setAcceptTrigger={setAcceptTrigger}
+                           open={open} openModal={openModal} closeModal={closeModal} backendAction={editarEstadoUsuario} />
+                          )
+                      }
+                    })}                
               </tbody>
             </table>
             <ModalJ open={open} closeModal={closeModal} titulo={"¿Autorizas al usuario?"} textbutton1={"Aceptar"} textbutton2={"Cancelar"}
@@ -140,8 +120,6 @@ const Avances = () => {
 
 
 export default Avances;
-
-
 
 
 /*import React from 'react';
