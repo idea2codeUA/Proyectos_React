@@ -2,7 +2,8 @@ import React from 'react'
 import InscripcionCard from 'components/InscripcionCard';
 import { GET_INSCRIPCIONES_BY_LEADER } from 'graphql/Inscripciones/queries';
 import { useUser } from 'context/userContext';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
+import { ToastContainer, toast } from 'react-toastify';
 const InscripcionesPendientes = () => {
     
     //data del usuario
@@ -18,7 +19,6 @@ const InscripcionesPendientes = () => {
     //haciendo la data del query mas manejable
     let queryData = null;
     
-
     if(data)
     {
      //flitrado de doble profundidad vamonos!!!
@@ -26,6 +26,17 @@ const InscripcionesPendientes = () => {
         return ({...proyecto, inscripciones: proyecto.inscripciones.filter(inscripcion => inscripcion.estado == "PENDIENTE")});
     });
     };
+
+    // notificacion de toastify
+    const notify = (mensaje) => {toast(mensaje, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })};
     
 
     if(loading) return <div>Cargando...</div>
@@ -37,11 +48,22 @@ const InscripcionesPendientes = () => {
                 return (
                 proyecto.inscripciones.map(inscripcion => {
                     return(
-                    <InscripcionCard key={inscripcion._id} proyecto={proyecto} inscripcion={inscripcion}/>
+                    <InscripcionCard key={inscripcion._id} proyecto={proyecto} inscripcion={inscripcion} notify={notify}/>
                     )
                 })
                 )
             })}
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            />    
         </div>
         </>
     )

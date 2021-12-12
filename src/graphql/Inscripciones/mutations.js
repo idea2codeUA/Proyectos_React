@@ -14,27 +14,17 @@ $estudiante: String!) {
 }
 `;
 
-const APROBAR_INSCRIPCION = gql`
-mutation Mutation(
-    $aprobarInscripcionId: String!
-    ) 
-    {
-    aprobarInscripcion(
-        id: $aprobarInscripcionId
-    ) 
-    {
-      _id
-      estado
-      fechaIngreso
-      fechaEgreso
-      proyecto {
-        _id
-      }
-      estudiante {
-        _id
-      }
-    }
+const MODIFICAR_ESTADO_INSCRIPCION = gql`
+mutation AprobarInscripcion
+($aprobarInscripcionId: String!, 
+$estado: Enum_EstadoInscripcion!) {
+  aprobarInscripcion
+  (id: $aprobarInscripcionId, 
+  estado: $estado) {
+    _id
+    estado
   }
+}
 `;
 
-export{CREAR_INSCRIPCION,APROBAR_INSCRIPCION}
+export{CREAR_INSCRIPCION,MODIFICAR_ESTADO_INSCRIPCION}
