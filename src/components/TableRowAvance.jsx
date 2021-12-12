@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 const TableRowAvance = (props) => {
     return (
-      <tr>
-        <td>Nombre Proyecto</td>
-        <td>Texto</td>
-        <td>
-          <Link to={`editarusuario/${props.user._id}`}>
-            <i className='fas fa-file-upload text-yellow-600 hover:text-yellow-400 cursor-pointer' />
-          </Link>
-        </td>
-      </tr>
+        <tr>
+            <td>Descripción</td>
+            <td>Fecha</td>
+            <td>Creado Por</td>
+            <td>Observaciones</td>
+            <td>
+            <Link to={`editaravance/${props.user._id}`}>
+                <i className='fas fa-pencil-alt text-yellow-600 hover:text-yellow-400 cursor-pointer' />
+            </Link>
+            </td>
+        </tr>      
     )
 }
 

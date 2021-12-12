@@ -4,9 +4,9 @@ import { GET_USUARIOS } from 'graphql/usuarios/queries';
 import {EDITAR_USUARIO} from "graphql/usuarios/mutations";
 import { GET_ESTUDIANTES } from 'graphql/usuarios/queries';
 import { GET_PROYECTOS } from 'graphql/proyectos/queries';
-import { CREAR_AVANCE } from 'graphql/Avances/mutations';
-import { EDITAR_AVANCE } from 'graphql/Avances/mutations';
-import { GET_AVANCES_PROYECTO } from 'graphql/Avances/queries';
+import { CREAR_AVANCE } from 'graphql/avances/mutations';
+import { EDITAR_AVANCE } from 'graphql/avances/mutations';
+import { GET_AVANCES_PROYECTO } from 'graphql/avances/queries';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enums';
@@ -79,12 +79,15 @@ const Avances = () => {
         <PrivateRoute roleList={['ADMINISTRADOR',"LIDER", "ESTUDIANTE"]}> 
           
           <div>
+            <button type="submit" className='fas fa-file-upload text-yellow-600 hover:text-yellow-400 cursor-pointer'>Crear Avance</button>
             <table className='tabla'>
               <thead>
                 <tr>
-                  <th>Nombre Proyecto</th>
-                  <th>Avances</th>
-                  <th>Agregar Avance</th>
+                  <th>Descripción</th>
+                  <th>Fecha</th>
+                  <th>Creado Por</th>
+                  <th>Observaciones</th>
+                  <th>Editar Avance</th>
                 </tr>
               </thead>
               <tbody>
@@ -117,6 +120,7 @@ const Avances = () => {
             </table>
             <ModalJ open={open} closeModal={closeModal} titulo={"¿Autorizas al usuario?"} textbutton1={"Aceptar"} textbutton2={"Cancelar"}
             setCancelTrigger={setCancelTrigger} setAcceptTrigger ={setAcceptTrigger}/>
+            
           </div>
         </PrivateRoute>
       );
