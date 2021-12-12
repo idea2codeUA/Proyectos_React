@@ -55,7 +55,7 @@ const EditProfile = () => {
 
   return (
     <div className='flew flex-col w-full h-full items-center justify-center p-10'>
-      <Link to='/app/usuarios'>
+      <Link to='/app'>
         <i className='fas fa-arrow-left text-gray-600 cursor-pointer font-bold text-xl hover:text-gray-900' />
       </Link>
       <h1 className='m-4 text-3xl text-gray-800 font-bold text-center'>Editar Perfil</h1>
