@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_USUARIO } from 'graphql/usuarios/queries';
-import { GET_AVANCES_PROYECTO } from 'graphql/avances/queries';
+import { GET_AVANCES_PROYECTO } from 'graphql/Avances/queries';
 import Input from 'components/Input';
 import ButtonLoading from 'components/ButtonLoading';
 import useFormData from 'hooks/useFormData';
@@ -11,7 +11,7 @@ import { EDITAR_USUARIO } from 'graphql/usuarios/mutations';
 import DropDown from 'components/Dropdown';
 import { Enum_EstadoUsuario } from 'utils/enums';
 import "styles/JohinyStyles.css";
-import { EDITAR_AVANCE } from 'graphql/avances/mutations';
+import { EDITAR_AVANCE } from 'graphql/Avances/mutations';
 
 const EditarAvance = () => {
     const { form, formData, updateFormData } = useFormData(null);
