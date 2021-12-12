@@ -5,7 +5,6 @@ import { UserContext } from 'context/userContext';
 import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Index from 'pages/Index';
-import Page2 from 'pages/Page2';
 import Avances from 'pages/avances/Avances';
 import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
 import EditProfile from 'pages/usuarios/EditProfile';
