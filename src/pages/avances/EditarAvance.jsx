@@ -1,15 +1,10 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_USUARIO } from 'graphql/usuarios/queries';
 import { GET_AVANCES_PROYECTO } from 'graphql/Avances/queries';
 import Input from 'components/Input';
-import ButtonLoading from 'components/ButtonLoading';
 import useFormData from 'hooks/useFormData';
 import { toast } from 'react-toastify';
-import { EDITAR_USUARIO } from 'graphql/usuarios/mutations';
-import DropDown from 'components/Dropdown';
-import { Enum_EstadoUsuario } from 'utils/enums';
 import "styles/JohinyStyles.css";
 import { EDITAR_AVANCE } from 'graphql/Avances/mutations';
 
@@ -110,66 +105,3 @@ const EditarAvance = () => {
 };
 
 export default EditarAvance;
-
-
-/*
-
-      <form
-        onSubmit={submitForm}
-        onChange={updateFormData}
-        ref={form}
-        className='flex flex-col items-center justify-center'
-      >
-        <div className="flex flex-row items-center">
-        <Input
-          label='Nombre:'
-          type='text'
-          name='nombre'
-          defaultValue={queryData.Usuario.nombre}
-          required={true}
-          labelstyle = "flex flex-col my-3 mx-16"
-          inputstyle = "inputj"
-        />
-        <Input
-          label='Apellido:'
-          type='text'
-          name='apellido'
-          defaultValue={queryData.Usuario.apellido}
-          required={true}
-          labelstyle = "flex flex-col my-3 mx-16"
-          inputstyle = "inputj"
-        />
-        </div>
-        <div className="flex flex-row items-center">
-        <Input
-          label='Correo:'
-          type='email'
-          name='correo'
-          defaultValue={queryData.Usuario.correo}
-          required={true}
-          labelstyle = "flex flex-col my-3 mx-16"
-          inputstyle = "inputj"
-        />
-        <Input
-          label='Identificación:'
-          type='text'
-          name='identificacion'
-          defaultValue={queryData.Usuario.identificacion}
-          required={true}
-          labelstyle = "flex flex-col my-3 mx-16"
-          inputstyle = "inputj"
-        />
-        </div>
-        <span>Rol: {queryData.Usuario.rol}</span>
-        <ButtonLoading
-          disabled={Object.keys(formData).length === 0}
-          loading={mutationLoading}
-          text='Confirmar'
-        />
-      </form>
-    </div>
-  );
-};
-
-
-*/
