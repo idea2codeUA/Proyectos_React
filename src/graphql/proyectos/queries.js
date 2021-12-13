@@ -61,4 +61,25 @@ query UsuarioII($id: String!) {
 }
 `
 
-export {GET_PROYECTOS,GET_PROYECTOS_INSCRIPCIONES,GET_PROYECTOS_INSCRITOS_USER};
+const GET_PROYECTOS_LIDERADOS_USER =gql`
+query Usuario($id: String!) {
+  Usuario(_id: $id) {
+    proyectosLiderados {
+      _id
+      nombre
+      estado
+      fase
+      fechaInicio
+      fechaFin
+      objetivos {
+        _id
+        descripcion
+        tipo
+      }
+      presupuesto
+    }
+}
+}
+`
+
+export {GET_PROYECTOS,GET_PROYECTOS_INSCRIPCIONES,GET_PROYECTOS_INSCRITOS_USER,GET_PROYECTOS_LIDERADOS_USER};
