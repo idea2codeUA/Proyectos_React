@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://unpkg.com/tailwindcss/dist/tailwind.min.css" );
+
+.landing_page_title {
+    font-family: "Roboto",sans-serif;
+}
+
+.projectCardsFont {
+    font-family: "Roboto",sans-serif;
+}
+
+.buttonJ_style {
+    font-family: "Roboto",sans-serif;
+}
+
+.inputj {
+    @apply border-b-2 border-blue-600 p-2 rounded-lg outline-none;
+}
+.Login-component {
+    background: url(../components/img/login.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+}
+.Registro {
+    background: url(../components/img/registro.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+}
