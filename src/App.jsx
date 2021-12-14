@@ -28,6 +28,7 @@ import LiderProyectos from 'pages/proyectos/LiderProyectos';
 import AdministrarProyecto from 'pages/proyectos/AdministrarProyecto';
 import InscripcionesPendientes from 'pages/Inscripciones/InscripcionesPendientes';
 import RegistrarProyecto from 'pages/proyectos/RegistrarProyecto';
+import AñadirObjetivos from 'pages/proyectos/AñadirObjetivos';
 
 const httpLink = createHttpLink({
   uri: 'https://backend-idea2code.herokuapp.com/graphql',
@@ -97,6 +98,7 @@ function App() {
                 <Route path='proyectos_estudiante' element={<EstudianteProyectos />} />
                 <Route path='proyectos_lider' element={<LiderProyectos />} />
                 <Route path='proyectos_lider/crear' element={<RegistrarProyecto />} />
+                <Route path='proyectos_lider/crear/objetivos/:_id' element={<AñadirObjetivos />} />
                 <Route path='proyectos_lider/editar/:_id' element={<AdministrarProyecto />} />
                 <Route path='Inscripciones' element={<InscLandingPage/>} />
                 <Route path='Inscripciones_Pendientes' element={<InscripcionesPendientes/>} />

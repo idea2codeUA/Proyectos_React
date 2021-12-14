@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from 'components/Input';
 import DropDown from 'components/Dropdown';
 import ButtonLoading from 'components/ButtonLoading';
@@ -7,25 +7,32 @@ import { REGISTRO_PROYECTO } from 'graphql/proyectos/mutations';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router';
 import "styles/JohinyStyles.css";
+import { useUser } from 'context/userContext';
 
 
 const RegistrarProyecto = () => {
 
+const {userData} = useUser();  
 const navigate = useNavigate();
-const { form, formData, updateFormData } = useFormData();
+
+const { form, formData, updateFormData } = useFormData(null);
 
 const [registro, { data: dataMutation, loading: loadingMutation, error: errorMutation }] =
   useMutation(REGISTRO_PROYECTO);
 
 const submitForm = (e) => {
   e.preventDefault();
-  registro({ variables: formData });
+  registro({ variables: {...formData,
+    presupuesto: parseFloat(formData.presupuestoString),
+    estado: "INACTIVO",
+   fase: "PENDIENTE",
+   lider: userData._id} });
 };
 
 useEffect(() => {
   if (dataMutation) {
     if (dataMutation) {
-      
+      navigate(`objetivos/${dataMutation.crearProyecto._id}`)
     }
   }
 }, [dataMutation]);
@@ -33,42 +40,27 @@ useEffect(() => {
 
   return (
 
-    <div className='Registro'>
+    <div className='flex Registro'>
    
 <div className='flex flex-col h-full w-full items-center justify-center'>
-      <h1 className='text-3xl font-bold my-4'>Regístrar Nuevo Proyecto</h1>
-      <form className='flex flex-col' onSubmit={submitForm} onChange={updateFormData} ref={form}/>
+      <h1 className='text-3xl font-bold my-4 mr-20'>Regístrar Nuevo Proyecto</h1>
+      <form className='flex flex-col' onSubmit={submitForm} onChange={updateFormData} ref={form} id="registroProyectoForm">
         <div className='grid grid-cols-2 gap-5'>
-          <Input label='Nombre Del Proyecto:' name='nombre del proyecto' type='text' required />
-          <Input label='ID proyecto:' name='ID' type='text' required />
-          
-          <Input label='Fecha de Inicio:' name='Fecha' type='date' required />
-          <Input label='Presupuesto:' name='Presupuesto'  required />
-          <div>
-                    <label htmlFor="about" className="block text-sm font-medium text-gray-1000">
-                      Descripcion 
-                    </label>
-                    <div className="mt-1">
-                      <textarea
-                        id="about"
-                        name="about"
-                        rows={3}
-                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                        placeholder="Descripcion"
-                        defaultValue={''}
-                      />
-                    </div>
-        </div>
+          <Input label='Nombre Del Proyecto:' name='nombre' type='text' required labelstyle = "flex flex-col my-3 mx-16 ml-2" inputstyle={"p-2 ring-2 ring-blue-500 rounded-lg ml-1 outline-none"} className="p-4 ring-2 ring-blue-500" />
+          <Input label='Presupuesto:' name='presupuestoString'  required labelstyle = "flex flex-col my-3 mx-16 ml-2"    inputstyle={"p-2 ring-2 ring-blue-500 rounded-lg ml-1 outline-none"}/>
+          <Input label='Fecha de Inicio:' name='fechaInicio' type='date' required labelstyle = "flex flex-col my-3 mx-16 ml-2" inputstyle={"p-2 ring-2 ring-blue-500 rounded-lg ml-1 outline-none"} />
+          <Input label='Fecha de Fin:' name='fechaFin' type='date' required labelstyle = "flex flex-col my-3 mx-16 ml-2" inputstyle={"p-2 ring-2 ring-blue-500 rounded-lg ml-1 outline-none"} />
+          </div>
+      </form>
+      <div className='flex mr-14'>
         <ButtonLoading
-        class="transition ease-in-out duration-700"
+          form= "registroProyectoForm"
           disabled={Object.keys.length === 0}
-          loading={false}
+          loading={loadingMutation}
           text='Registrar Proyecto'
         />
-     
-  
+        </div>
       </div>
-    </div>
     </div>
 
 );

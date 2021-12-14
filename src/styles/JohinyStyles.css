@@ -15,3 +15,14 @@
 .inputj {
     @apply border-b-2 border-blue-600 p-2 rounded-lg outline-none;
 }
+
+.Login-component {
+    background: url(../components/img/login.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+}
+.Registro {
+    background: url(../components/img/registro.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+}

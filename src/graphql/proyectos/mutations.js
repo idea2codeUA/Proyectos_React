@@ -1,22 +1,25 @@
 import {gql} from "@apollo/client";
 
 const REGISTRO_PROYECTO = gql`
-mutation Mutation($nombre: String!,
-    $presupuesto: Float!,
-     $fase: Enum_FaseProyecto!,
-      $lider: String!,
-       $estado: Enum_EstadoProyecto!, 
-       $fechaInicio: Date!
-       , $fechaFin: Date!, $objetivos: [crearObjetivo]) {
-   
-     crearProyecto(nombre: $nombre,
-      presupuesto: $presupuesto,
-       fase: $fase,
-        lider: $lider,
-         estado: $estado,
-          fechaInicio: $fechaInicio,
-           fechaFin: $fechaFin,
-           objetivos: $objetivos) }`;
+mutation CrearProyecto
+($nombre: String!, 
+$presupuesto: Float!, 
+$fechaInicio: Date!, 
+$fechaFin: Date!, 
+$estado: Enum_EstadoProyecto!, 
+$fase: Enum_FaseProyecto!, 
+$lider: String!) {
+  crearProyecto
+  (nombre: $nombre, 
+  presupuesto: $presupuesto, 
+  fechaInicio: $fechaInicio, 
+  fechaFin: $fechaFin, 
+  estado: $estado, 
+  fase: $fase, 
+  lider: $lider) {
+    _id
+  }
+}`;
        
    
 const EDIT_PROYECTO = gql`
@@ -29,7 +32,8 @@ mutation EditarProyecto(
     $aprobado: Enum_EstadoAprobado, 
     $estado: Enum_EstadoProyecto!, 
     $fase: Enum_FaseProyecto!, 
-    $lider: String!) {
+    $lider: String!,
+    $objetivos: [crearObjetivo]) {
     editarProyecto(
         _id: $id 
         nombre: $nombre 
@@ -39,7 +43,9 @@ mutation EditarProyecto(
         aprobado: $aprobado 
         estado: $estado 
         fase: $fase 
-        lider: $lider) {
+        lider: $lider
+        objetivos: $objetivos) {
+          _id
     aprobado
   }
 }`

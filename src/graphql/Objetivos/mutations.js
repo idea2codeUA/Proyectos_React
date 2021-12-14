@@ -13,5 +13,16 @@ mutation EditarObjetivo(
   }
 }
 `
+const CREAR_OBJETIVO = gql`
+mutation CrearObjetivo
+($idProyecto: String!, 
+$campos: camposObjetivo!) {
+  crearObjetivo
+  (idProyecto: $idProyecto, 
+  campos: $campos) {
+    _id
+  }
+}
+`
 
-export {EDITAR_OBJETIVO};
+export {EDITAR_OBJETIVO,CREAR_OBJETIVO};
