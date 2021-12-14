@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { GET_AVANCES_PROYECTO } from 'graphql/Avances/queries';
 import { useState } from 'react';
 import TableRowAvance from 'components/TableRowAvance';
 import { useUser } from 'context/userContext';
 import { useParams } from 'react-router-dom'
+import { EDITAR_AVANCE } from 'graphql/Avances/mutations';
 
 const Avances = () => {
 
@@ -21,6 +22,9 @@ const Avances = () => {
       idProyecto: _id 
     }
   });
+
+  //mutacion para ediatar avance
+  const [editAvance,{data: avanceData, loading : loadingData, error: errorData}] = useMutation(EDITAR_AVANCE);
 
   // pone los datos en una variable mas manejable
   if(data)
@@ -54,7 +58,7 @@ const Avances = () => {
               <tbody>
                 { queryData.map((avance) => {
                   return(
-                  <TableRowAvance avance={avance}/>
+                  <TableRowAvance avance={avance} editAvance={editAvance} proyectoId={_id}/>
                   )
                   })} 
               </tbody>
