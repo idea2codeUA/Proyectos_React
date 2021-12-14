@@ -6,9 +6,9 @@ import Input from 'components/Input';
 import useFormData from 'hooks/useFormData';
 import { toast } from 'react-toastify';
 import "styles/JohinyStyles.css";
-import { EDITAR_AVANCE } from 'graphql/avances/mutations';
+import { CREAR_AVANCE } from 'graphql/avances/mutations';
 
-const EditarAvance = () => {
+const CrearAvance = () => {
     const { form, formData, updateFormData } = useFormData(null);
     const { _id } = useParams();
   
@@ -20,8 +20,8 @@ const EditarAvance = () => {
       variables: { _id },
     })
 
-    const [editarAvance, { data: mutationData, loading: mutationLoading, error: mutationError }] =
-    useMutation(EDITAR_AVANCE);
+    const [crearAvance, { data: mutationData, loading: mutationLoading, error: mutationError }] =
+    useMutation(CREAR_AVANCE);
 
     /* Pendiente de modificar
     const submitForm = (e) => {
@@ -35,13 +35,13 @@ const EditarAvance = () => {
 
       useEffect(() => {
         if (mutationData) {
-          toast.success('Avance modificado correctamente');
+          toast.success('Avance creado correctamente');
         }
       }, [mutationData]);
     
       useEffect(() => {
         if (mutationError) {
-          toast.error('Error modificando el avance');
+          toast.error('Error creando el avance');
         }
     
         if (queryError) {
@@ -56,7 +56,7 @@ const EditarAvance = () => {
       <Link to='/app/proyectos/avances'>
         <i className='fas fa-arrow-left text-gray-600 cursor-pointer font-bold text-xl hover:text-gray-900' />
       </Link>
-      <h1 className='m-4 text-3xl text-gray-800 font-bold text-center'>Editar Avance</h1>
+      <h1 className='m-4 text-3xl text-gray-800 font-bold text-center'>Crear Avance</h1>
     
       <div className="flex flex-row items-center">
         <Input
@@ -99,9 +99,18 @@ const EditarAvance = () => {
           labelstyle = "flex flex-col my-3 mx-16"
           inputstyle = "inputj"
         />
+          <Input
+          label='Proyecto:'
+          type='text'
+          name='proyecto'
+       //   defaultValue={queryData.Usuario.apellido}
+          required={true}
+          labelstyle = "flex flex-col my-3 mx-16"
+          inputstyle = "inputj"
+        />
         </div>
     </div>
   );
 };
 
-export default EditarAvance;
+export default CrearAvance;

@@ -6,6 +6,7 @@ import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import Index from 'pages/Index';
 import Avances from 'pages/avances/Avances';
+import CrearAvance from 'pages/avances/Avances';
 import EditarAvance from 'pages/avances/EditarAvance';
 import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
 import EditProfile from 'pages/usuarios/EditProfile';
@@ -90,6 +91,7 @@ function App() {
                 <Route path='usuarios/editarusuario/:_id' element={<EditarUsuario />} />
                 <Route path='proyectos' element={<IndexProjectos />} />
                 <Route path='proyectos/avances/:_id' element={<Avances />} />
+                <Route path='proyectos/avances' element={<CrearAvance />} />
                 <Route path='proyectos/avances/editaravance/:_id' element={<EditarAvance />} />
                 <Route path='proyectos_estudiante' element={<EstudianteProyectos />} />
                 <Route path='proyectos_lider' element={<LiderProyectos />} />
