@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_AVANCES_PROYECTO } from 'graphql/Avances/queries';
+import { GET_AVANCES_PROYECTO } from 'graphql/avances/queries';
 import { useState } from 'react';
 import TableRowAvance from 'components/TableRowAvance';
 import { useUser } from 'context/userContext';
