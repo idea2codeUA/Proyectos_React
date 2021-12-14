@@ -21,13 +21,15 @@ mutation EditarAvance(
     $id: ID!, 
     $fecha: Date!, 
     $descripcion: String!, 
-    $proyecto: String!, 
+    $proyecto: String!,
+    $observaciones: String, 
     $creadoPor: String!) {
   editarAvance(
       _id: $id, 
       fecha: $fecha, 
       descripcion: $descripcion, 
-      proyecto: $proyecto, 
+      proyecto: $proyecto,
+      observaciones: $observaciones 
       creadoPor: $creadoPor) {
   _id  
   }

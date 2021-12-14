@@ -42,7 +42,7 @@ const LiderProyectos = () => {
 
   return (
     <PrivateRoute roleList={['LIDER']}>
-      <div>
+      <div className='flex flex-col'>
         <table className='tabla'>
           <thead>
             <tr>
@@ -64,6 +64,7 @@ const LiderProyectos = () => {
                 })}
           </tbody>
         </table>
+        <button className=' text-white cursor-pointer max-w-xs bg-blue-600 self-end p-3 mt-1 mr-3 font-bold hover:bg-blue-700 hover:border-blue-600 rounded-lg'>Crear Nuevo Proyecto</button>
       </div>
     </PrivateRoute>
   );

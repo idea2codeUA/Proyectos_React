@@ -7,6 +7,7 @@ query FiltrarAvance($idProyecto: String!) {
   descripcion
   fecha
   creadoPor {
+    _id
     nombre
     apellido
   }

@@ -24,7 +24,7 @@ import IndexProjectos from 'pages/proyectos/IndexProjectos';
 import InscLandingPage from 'pages/Inscripciones/InscLandingPage';
 import EstudianteProyectos from "pages/proyectos/EstudianteProyectos";
 import LiderProyectos from 'pages/proyectos/LiderProyectos';
-
+import EditarProyecto from 'pages/proyectos/editarProyecto';
 import InscripcionesPendientes from 'pages/Inscripciones/InscripcionesPendientes';
 
 const httpLink = createHttpLink({
@@ -93,6 +93,7 @@ function App() {
                 <Route path='proyectos/avances/editaravance/:_id' element={<EditarAvance />} />
                 <Route path='proyectos_estudiante' element={<EstudianteProyectos />} />
                 <Route path='proyectos_lider' element={<LiderProyectos />} />
+                <Route path='proyectos_lider/editar/:_id' element={<EditarProyecto />} />
                 <Route path='Inscripciones' element={<InscLandingPage/>} />
                 <Route path='Inscripciones_Pendientes' element={<InscripcionesPendientes/>} />
               </Route>

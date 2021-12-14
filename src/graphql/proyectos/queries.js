@@ -18,6 +18,36 @@ query Proyectos {
 }
 `;
 
+const GET_PROYECTO = gql`
+query Proyecto($id: String!) {
+  Proyecto(_id: $id) {
+    _id
+    nombre
+    fechaInicio
+    fechaFin
+    estado
+    fase
+    objetivos {
+      _id
+      descripcion
+      tipo
+    }
+    presupuesto
+    avances {
+      _id
+      descripcion
+      fecha
+      creadoPor {
+        _id
+        nombre
+        apellido
+      }
+      observaciones
+    }
+  }
+}
+`;
+
 const GET_PROYECTOS_INSCRIPCIONES =gql`
 query Proyectos {
   Proyectos {
@@ -82,4 +112,4 @@ query Usuario($id: String!) {
 }
 `
 
-export {GET_PROYECTOS,GET_PROYECTOS_INSCRIPCIONES,GET_PROYECTOS_INSCRITOS_USER,GET_PROYECTOS_LIDERADOS_USER};
+export {GET_PROYECTOS,GET_PROYECTO,GET_PROYECTOS_INSCRIPCIONES,GET_PROYECTOS_INSCRITOS_USER,GET_PROYECTOS_LIDERADOS_USER};
