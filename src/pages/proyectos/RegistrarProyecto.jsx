@@ -1,24 +1,21 @@
 import React, { useEffect } from 'react';
 import Input from 'components/Input';
-import { Enum_Usuarios} from 'utils/enums';
 import DropDown from 'components/Dropdown';
 import ButtonLoading from 'components/ButtonLoading';
 import useFormData from 'hooks/useFormData';
-import { Link } from 'react-router-dom';
-import { REGISTROPROYECTO } from 'graphql/RegistroProyecto/mutations';
+import { REGISTRO_PROYECTO } from 'graphql/proyectos/mutations';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router';
-import { useProyectos } from 'context/proyectoregistro';
 import "styles/JohinyStyles.css";
 
 
-const Registrar = () => {
-const { setToken } = useProyectos();
+const RegistrarProyecto = () => {
+
 const navigate = useNavigate();
 const { form, formData, updateFormData } = useFormData();
 
 const [registro, { data: dataMutation, loading: loadingMutation, error: errorMutation }] =
-  useMutation(REGISTROPROYECTO);
+  useMutation(REGISTRO_PROYECTO);
 
 const submitForm = (e) => {
   e.preventDefault();
@@ -27,12 +24,11 @@ const submitForm = (e) => {
 
 useEffect(() => {
   if (dataMutation) {
-    if (dataMutation.definirToken.token) {
-      setToken(dataMutation.definirToken.token);
-      navigate('/');
+    if (dataMutation) {
+      
     }
   }
-}, [dataMutation, setToken, navigate]);
+}, [dataMutation]);
 
 
   return (
@@ -45,7 +41,6 @@ useEffect(() => {
         <div className='grid grid-cols-2 gap-5'>
           <Input label='Nombre Del Proyecto:' name='nombre del proyecto' type='text' required />
           <Input label='ID proyecto:' name='ID' type='text' required />
-          <DropDown label='Usuario quien Registra:' name='Usuario' type='text' required={true} options={Enum_Usuarios} />
           
           <Input label='Fecha de Inicio:' name='Fecha' type='date' required />
           <Input label='Presupuesto:' name='Presupuesto'  required />
@@ -79,4 +74,4 @@ useEffect(() => {
 );
 };
 
-export default Registrar;
+export default RegistrarProyecto;

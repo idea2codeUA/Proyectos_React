@@ -1,11 +1,6 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { CREAR_AVANCE } from 'graphql/avances/mutations';
-import { EDITAR_AVANCE } from 'graphql/avances/mutations';
-import { GET_AVANCES_PROYECTO } from 'graphql/avances/queries';
-import { toast } from 'react-toastify';
-import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enums';
-import PrivateRoute from 'components/PrivateRoute';
+import { GET_AVANCES_PROYECTO } from 'graphql/Avances/queries';
 import { useState } from 'react';
 import TableRowAvance from 'components/TableRowAvance';
 import { useUser } from 'context/userContext';

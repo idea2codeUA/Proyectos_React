@@ -7,11 +7,15 @@ import { EDIT_PROYECTO } from 'graphql/proyectos/mutations';
 import PrivateRoute from 'components/PrivateRoute';
 import { GET_PROYECTOS_LIDERADOS_USER } from 'graphql/proyectos/queries';
 import { useUser } from 'context/userContext';
+import { useNavigate } from 'react-router-dom';
 
 const LiderProyectos = () => {
 
     //data del usuario
     const {userData} = useUser();
+
+    // funcion de navegacion
+    const navigate = useNavigate();
 
     //query proyectos liderados por el usuario
     const {data,loading,error} = useQuery(GET_PROYECTOS_LIDERADOS_USER,{
@@ -64,7 +68,7 @@ const LiderProyectos = () => {
                 })}
           </tbody>
         </table>
-        <button className=' text-white cursor-pointer max-w-xs bg-blue-600 self-end p-3 mt-1 mr-3 font-bold hover:bg-blue-700 hover:border-blue-600 rounded-lg'>Crear Nuevo Proyecto</button>
+        <button className=' text-white cursor-pointer max-w-xs bg-blue-600 self-end p-3 mt-1 mr-3 font-bold hover:bg-blue-700 hover:border-blue-600 rounded-lg' onClick={() => navigate("crear")}>Crear Nuevo Proyecto</button>
       </div>
     </PrivateRoute>
   );
