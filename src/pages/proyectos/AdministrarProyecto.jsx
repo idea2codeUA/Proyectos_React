@@ -178,7 +178,7 @@ const AvanceRow = (props) => {
 
 // componente principal
 
-const EditarProyecto = () => {
+const AdministrarProyecto = () => {
 
   const {userData} = useUser();
   console.log(userData)
@@ -292,4 +292,4 @@ const EditarProyecto = () => {
   );
 };
 
-export default EditarProyecto;
+export default AdministrarProyecto;
