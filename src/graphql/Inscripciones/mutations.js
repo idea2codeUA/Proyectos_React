@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 
 const CREAR_INSCRIPCION = gql`
+
 mutation CrearInscripcion
 (
 $proyecto: String!, 

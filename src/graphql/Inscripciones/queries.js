@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+
 const GET_INSCRIPCIONES_BY_LEADER = gql`
 
 query Usuario($id: String!) {
@@ -20,3 +21,4 @@ query Usuario($id: String!) {
 }`
 
 export {GET_INSCRIPCIONES_BY_LEADER};
+
