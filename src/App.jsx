@@ -5,11 +5,11 @@ import { UserContext } from 'context/userContext';
 import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Index from 'pages/Index';
-import Page2 from 'pages/Page2';
-import IndexCategory1 from 'pages/category1/Index';
-import Category1 from 'pages/category1/CategoryPage1';
-import IndexUsuarios from 'pages/usuarios';
-import EditarUsuario from 'pages/usuarios/editar';
+import Avances from 'pages/avances/Avances';
+import CrearAvance from 'pages/avances/CrearAvance';
+import EditarAvance from 'pages/avances/EditarAvance';
+import IndexUsuarios from 'pages/usuarios/IndexUsuarios';
+import EditProfile from 'pages/usuarios/EditProfile';
 import 'styles/globals.css';
 import 'styles/tabla.css';
 import AuthLayout from 'layouts/AuthLayout';
@@ -20,8 +20,15 @@ import jwt_decode from 'jwt-decode';
 import LandingPage from 'pages/LandingPage';
 import 'styles/globals.css';
 import "styles/JohinyStyles.css";
-
-// import PrivateRoute from 'components/PrivateRoute';
+import EditarUsuario from 'pages/usuarios/EditarUsuario';
+import IndexProjectos from 'pages/proyectos/IndexProjectos';
+import InscLandingPage from 'pages/Inscripciones/InscLandingPage';
+import EstudianteProyectos from "pages/proyectos/EstudianteProyectos";
+import LiderProyectos from 'pages/proyectos/LiderProyectos';
+import AdministrarProyecto from 'pages/proyectos/AdministrarProyecto';
+import InscripcionesPendientes from 'pages/Inscripciones/InscripcionesPendientes';
+import RegistrarProyecto from 'pages/proyectos/RegistrarProyecto';
+import AñadirObjetivos from 'pages/proyectos/AñadirObjetivos';
 
 const httpLink = createHttpLink({
   uri: 'https://backend-idea2code.herokuapp.com/graphql',
@@ -78,13 +85,23 @@ function App() {
         <UserContext.Provider value={{ userData, setUserData }}>
           <BrowserRouter>
             <Routes>
-              <Route path='/' element={<PrivateLayout />}>
+            <Route path='/' element={<LandingPage />} />
+              <Route path='/app' element={<PrivateLayout />}>
                 <Route path='' element={<Index />} />
-                <Route path='/usuarios' element={<IndexUsuarios />} />
-                <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
-                <Route path='/landing' element={<LandingPage />} />
-                <Route path='category1' element={<IndexCategory1 />} />
-                <Route path='category1/page1' element={<Category1 />} />
+                <Route path='editprofile/:_id' element={<EditProfile />} />
+                <Route path='usuarios' element={<IndexUsuarios />} />
+                <Route path='usuarios/editarusuario/:_id' element={<EditarUsuario />} />
+                <Route path='proyectos' element={<IndexProjectos />} />
+                <Route path='proyectos/avances/:_id' element={<Avances />} />
+                <Route path='proyectos/avances/crear/:_id' element={<CrearAvance />} />
+                <Route path='proyectos/avances/editaravance/:_id' element={<EditarAvance />} />
+                <Route path='proyectos_estudiante' element={<EstudianteProyectos />} />
+                <Route path='proyectos_lider' element={<LiderProyectos />} />
+                <Route path='proyectos_lider/crear' element={<RegistrarProyecto />} />
+                <Route path='proyectos_lider/crear/objetivos/:_id' element={<AñadirObjetivos />} />
+                <Route path='proyectos_lider/editar/:_id' element={<AdministrarProyecto />} />
+                <Route path='Inscripciones' element={<InscLandingPage/>} />
+                <Route path='Inscripciones_Pendientes' element={<InscripcionesPendientes/>} />
               </Route>
               <Route path='/auth' element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />

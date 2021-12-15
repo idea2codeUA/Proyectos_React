@@ -1,6 +1,6 @@
 .tabla {
   width: 100%;
-  margin: 10px;
+  margin: 0px;
   overflow-y: scroll;
 }
 
@@ -10,8 +10,13 @@
   border: 1px solid #ddd;
 }
 
+.tabla td:last-child{
+  padding: 0;
+}
+
 .tabla th {
-  background-color: #04aa46;
+  --tw-bg-opacity: 1;
+  background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
   color: white;
   padding-top: 12px;
   padding-bottom: 12px;

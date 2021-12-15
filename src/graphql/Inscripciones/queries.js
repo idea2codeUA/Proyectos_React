@@ -1,36 +1,24 @@
 import { gql } from '@apollo/client';
 
-const GET_INSCRIPCIONES = gql`
-query Query {
-    Inscripciones {
+
+const GET_INSCRIPCIONES_BY_LEADER = gql`
+
+query Usuario($id: String!) {
+  Usuario(_id: $id) {
+    proyectosLiderados {
       _id
-      estado
-      fechaIngreso
-      fechaEgreso
-      proyecto {
+      nombre
+      inscripciones {
         _id
-      }
-      estudiante {
-        _id
+        estado
+        estudiante {
+          nombre
+          apellido 
+        }
       }
     }
   }
-`;
+}`
 
-const GET_INSCRIPCIONES_PROYECTOS = gql`
-query InscripcionProyecto($idProyecto: String!) {
-    InscripcionProyecto(idProyecto: $idProyecto) {
-      _id
-      estado
-      fechaIngreso
-      fechaEgreso
-      proyecto {
-        _id
-      }
-      estudiante {
-        _id
-      }
-    }
-  }
+export {GET_INSCRIPCIONES_BY_LEADER};
 
-`;

@@ -3,17 +3,30 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from 'context/authContext';
 import PrivateComponent from './PrivateComponent';
 import logo from "media/logo.png";
-
+import { useUser } from 'context/userContext';
+import { useNavigate } from 'react-router-dom';
 const SidebarLinks = () => {
   return (
-    <ul className='mt-12'>
-      <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
-      <PrivateComponent roleList={['ADMINISTRADOR']}>
-        <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-user' />
+    <ul className='mt-4'>
+      <SidebarRoute to='/app' title='Inicio' icon='fas fa-home' />
+      <PrivateComponent roleList={['ADMINISTRADOR',"LIDER"]}>
+        <SidebarRoute to='/app/usuarios' title='Usuarios' icon='fas fa-user' />
       </PrivateComponent>
-      <SidebarRoute to='/page2' title='Proyectos' icon='fas fa-project-diagram' />
-      <SidebarRoute to='/category1' title='Inscripciones' icon='fas fa-clipboard-list' />
-      <SidebarRoute to='/category1/page1' title='Avances' icon='fas fa-file-upload' />
+      <PrivateComponent roleList={['ADMINISTRADOR']}>
+      <SidebarRoute to='/app/proyectos' title='Proyectos' icon='fas fa-project-diagram' />
+      </PrivateComponent>
+      <PrivateComponent roleList={['ESTUDIANTE']}>
+      <SidebarRoute to='/app/proyectos_estudiante' title='Proyectos' icon='fas fa-project-diagram' />
+      </PrivateComponent>
+      <PrivateComponent roleList={['LIDER']}>
+      <SidebarRoute to='/app/proyectos_lider' title='Proyectos Liderados' icon='fas fa-project-diagram' />
+      </PrivateComponent>
+      <PrivateComponent roleList={['ESTUDIANTE']}>
+      <SidebarRoute to='/app/Inscripciones' title='Proyectos Inscritos' icon='fas fa-clipboard-list' />
+      </PrivateComponent>
+      <PrivateComponent roleList={['LIDER']}>
+      <SidebarRoute to='/app/Inscripciones_Pendientes' title='Solicitudes de Inscripción' icon='fas fa-bell' />
+      </PrivateComponent>
       <Logout />
     </ul>
   );
@@ -46,6 +59,10 @@ const Logo = () => {
 };
 
 const Sidebar = () => {
+
+  const {userData,setUserData} = useUser();
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(true);
   return (
     <div className='flex flex-col md:flex-row flex-no-wrap md:h-full'>
@@ -54,6 +71,7 @@ const Sidebar = () => {
       <div className='sidebar hidden md:flex'>
         <div className='px-8'>
           <Logo />
+          <div className=" pl-9 font-semibold text-lg w-full flex items-center">¡Hola {userData.nombre}!<i onClick={()=>navigate(`/app/editprofile/${userData._id}`)} className="fas fa-user-edit pl-2 hover:text-green-600 cursor-pointer"></i></div>
           <SidebarLinks />
         </div>
       </div>
@@ -87,10 +105,11 @@ const SidebarRoute = ({ to, title, icon }) => {
   return (
     <li>
       <NavLink
+        end
         to={to}
         className={({ isActive }) =>
           isActive
-            ? 'sidebar-route text-white bg-blue-500'
+            ? 'sidebar-route text-white bg-blue-600'
             : 'sidebar-route text-gray-900 hover:text-white hover:bg-blue-300'
         }
       >

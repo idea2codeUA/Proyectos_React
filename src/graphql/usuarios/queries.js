@@ -28,4 +28,18 @@ const GET_USUARIO = gql`
   }
 `;
 
-export { GET_USUARIOS, GET_USUARIO };
+const GET_ESTUDIANTES =gql`
+query Estudiantes {
+  Estudiantes {
+    _id
+    nombre
+    apellido
+    identificacion
+    correo
+    rol
+    estado
+  }
+}
+`;
+
+export { GET_USUARIOS, GET_USUARIO, GET_ESTUDIANTES };
