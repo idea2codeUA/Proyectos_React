@@ -47,7 +47,7 @@ useEffect(() => {
       <form className='flex flex-col' onSubmit={submitForm} onChange={updateFormData} ref={form} id="registroProyectoForm">
         <div className='grid grid-cols-2 gap-5'>
           <Input label='Nombre Del Proyecto:' name='nombre' type='text' required labelstyle = "flex flex-col my-3 mx-16 ml-2" inputstyle={"p-2 ring-2 ring-blue-500 rounded-lg ml-1 outline-none"} className="p-4 ring-2 ring-blue-500" />
-          <Input label='Presupuesto:' name='presupuestoString'  required labelstyle = "flex flex-col my-3 mx-16 ml-2"    inputstyle={"p-2 ring-2 ring-blue-500 rounded-lg ml-1 outline-none"}/>
+          <Input label='Presupuesto:' name='presupuestoString' type="number" required labelstyle = "flex flex-col my-3 mx-16 ml-2"    inputstyle={"p-2 ring-2 ring-blue-500 rounded-lg ml-1 outline-none"}/>
           <Input label='Fecha de Inicio:' name='fechaInicio' type='date' required labelstyle = "flex flex-col my-3 mx-16 ml-2" inputstyle={"p-2 ring-2 ring-blue-500 rounded-lg ml-1 outline-none"} />
           <Input label='Fecha de Fin:' name='fechaFin' type='date' required labelstyle = "flex flex-col my-3 mx-16 ml-2" inputstyle={"p-2 ring-2 ring-blue-500 rounded-lg ml-1 outline-none"} />
           </div>

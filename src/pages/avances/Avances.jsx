@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { GET_AVANCES_PROYECTO } from 'graphql/avances/queries';
 import { useState } from 'react';
 import TableRowAvance from 'components/TableRowAvance';
 import { useUser } from 'context/userContext';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { EDITAR_AVANCE } from 'graphql/avances/mutations';
 
 const Avances = () => {
+
+  const navigate = useNavigate();
 
   let queryData = null;
   // utiliza los parametros de la url para obtner el id del proyecto
@@ -19,8 +22,11 @@ const Avances = () => {
   const {data,loading,error} = useQuery(GET_AVANCES_PROYECTO,{
     variables:{
       idProyecto: _id 
-    }
+    },pollInterval: 3000
   });
+
+  //mutacion para ediatar avance
+  const [editAvance,{data: avanceData, loading : loadingData, error: errorData}] = useMutation(EDITAR_AVANCE);
 
   // pone los datos en una variable mas manejable
   if(data)
@@ -54,12 +60,14 @@ const Avances = () => {
               <tbody>
                 { queryData.map((avance) => {
                   return(
-                  <TableRowAvance avance={avance}/>
+                  <TableRowAvance avance={avance} editAvance={editAvance} proyectoId={_id}/>
                   )
                   })} 
               </tbody>
             </table>
-            <button className=' text-white cursor-pointer max-w-xs bg-blue-600 self-end p-3 mt-1 mr-3 font-bold hover:bg-blue-700 hover:border-blue-600 rounded-lg'>Crear Avance</button>
+            <button className=' text-white cursor-pointer max-w-xs bg-blue-600 self-end p-3 mt-1 mr-3 font-bold hover:bg-blue-700 hover:border-blue-600 rounded-lg' onClick={() => {
+              navigate(`/app/proyectos/avances/crear/${_id}`)
+            }}>Crear Avance</button>
           </div>
       );
     };
