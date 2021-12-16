@@ -3,8 +3,8 @@ import estudiantes from "media/students1.svg";
 import ButtonJ from 'components/ButtonJ';
 const LandingPage = () => {
     return (
-        <>
-        <div className="fixed top-0 right-4 background_app">
+        <div className='background_app h-screen'>
+        <div className="fixed top-2 right-4">
         <div className="bg-gray-100 p-5 rounded-md shadow-md hover:bg-gray-300 hover:text-green-500">
         <ButtonJ texto="Login" route="/app" className="rounded-md px-20 text-2xl font-medium hover:bg-gray-300"/>
         </div>
@@ -20,9 +20,9 @@ const LandingPage = () => {
         <img src={estudiantes} alt="estudiantes"></img>
         <div className="text-center text-5xl font-medium">
         <h1 className="landing_page_title" >Haz aportes únicos y cambia el futuro</h1>    
-            </div>      
+        </div>      
         </div>
-        </>
+        </div>
     )
 }
 
