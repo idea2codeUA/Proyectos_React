@@ -1,12 +1,12 @@
 import React, { useEffect,useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_AVANCES_PROYECTO } from 'graphql/avances/queries';
+import { GET_AVANCES_PROYECTO } from 'graphql/Avances/queries';
 import Input from 'components/Input';
 import useFormData from 'hooks/useFormData';
 import { toast } from 'react-toastify';
 import "styles/JohinyStyles.css";
-import { CREAR_AVANCE } from 'graphql/avances/mutations';
+import { CREAR_AVANCE } from 'graphql/Avances/mutations';
 import { useUser } from 'context/userContext';
 
 const CrearAvance = () => {

@@ -4,7 +4,7 @@ import ButtonJ from 'components/ButtonJ';
 const LandingPage = () => {
     return (
         <>
-        <div className="fixed top-0 right-4">
+        <div className="fixed top-0 right-4 background_app">
         <div className="bg-gray-100 p-5 rounded-md shadow-md hover:bg-gray-300 hover:text-green-500">
         <ButtonJ texto="Login" route="/app" className="rounded-md px-20 text-2xl font-medium hover:bg-gray-300"/>
         </div>

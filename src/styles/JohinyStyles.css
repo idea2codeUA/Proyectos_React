@@ -26,3 +26,7 @@
   background-size: cover;
   height: 100%;
 }
+
+.background_app {
+    background: linear-gradient(to right, #085078, #85d8ce);
+}

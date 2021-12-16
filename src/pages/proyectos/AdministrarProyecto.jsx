@@ -7,7 +7,7 @@ import { EDIT_PROYECTO } from 'graphql/proyectos/mutations';
 import DropDown from 'components/Dropdown';
 import { useUser } from 'context/userContext';
 import { EDITAR_OBJETIVO } from 'graphql/Objetivos/mutations';
-import { EDITAR_AVANCE } from 'graphql/avances/mutations';
+import { EDITAR_AVANCE } from 'graphql/Avances/mutations';
 
 // componentes reactivos
 

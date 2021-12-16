@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_AVANCES_PROYECTO } from 'graphql/avances/queries';
+import { GET_AVANCES_PROYECTO } from 'graphql/Avances/queries';
 import Input from 'components/Input';
 import useFormData from 'hooks/useFormData';
 import { toast } from 'react-toastify';
 import "styles/JohinyStyles.css";
-import { EDITAR_AVANCE } from 'graphql/avances/mutations';
+import { EDITAR_AVANCE } from 'graphql/Avances/mutations';
 
 const EditarAvance = () => {
     const { form, formData, updateFormData } = useFormData(null);

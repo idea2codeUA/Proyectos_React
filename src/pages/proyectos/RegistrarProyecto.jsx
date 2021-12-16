@@ -40,9 +40,9 @@ useEffect(() => {
 
   return (
 
-    <div className='flex Registro'>
+    <div className='flex'>
    
-<div className='flex flex-col h-full w-full items-center justify-center'>
+<div className='flex flex-col h-full w-full items-center justify-center mt-64'>
       <h1 className='text-3xl font-bold my-4 mr-20'>Regístrar Nuevo Proyecto</h1>
       <form className='flex flex-col' onSubmit={submitForm} onChange={updateFormData} ref={form} id="registroProyectoForm">
         <div className='grid grid-cols-2 gap-5'>
