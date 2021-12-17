@@ -45,6 +45,7 @@ const DropdownJ = (props) => {
     return (
         <>
         <select
+          data-testid = "Select-Dropdown"
           name={props.name}
           className={props.className}
           value={selectedValue}
@@ -54,7 +55,7 @@ const DropdownJ = (props) => {
         >
           {optionsSelect.map((o) => {
             return (
-              <option key={nanoid()} value={o[0]}>
+              <option  key={nanoid()} value={o[0]}>
                 {o[1]}
               </option>
             );

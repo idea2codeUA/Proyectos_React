@@ -18,6 +18,7 @@ const ModalJ = (props) => {
 
     return (
             <Modal
+                data-testid = "modalj"
                 open={props.open}
                 onClose={props.closeModal}>
                     <Box sx={style}>
