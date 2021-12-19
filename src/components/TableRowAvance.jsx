@@ -10,7 +10,7 @@ const TableRowAvance = (props) => {
     if(editMode == false)
     {
         return (
-            <tr>
+            <tr data-testid = "TableRow">
                 <td>{descripcionState}</td>
                 <td>{props.avance.fecha.slice(0,10)}</td>
                 <td>{`${props.avance.creadoPor.nombre} ${props.avance.creadoPor.apellido}`}</td>

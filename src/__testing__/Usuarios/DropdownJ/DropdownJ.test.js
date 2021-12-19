@@ -1,6 +1,7 @@
 import React from "react";
-import { render, cleanup, screen, fireEvent} from '@testing-library/react';
 import DropdownJ from "components/DropdownJ";
+import { render, cleanup, screen, fireEvent} from '@testing-library/react';
+
 afterEach(cleanup);
 
 it("dropdown load with the corrects options", () => {
