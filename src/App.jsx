@@ -31,7 +31,7 @@ import RegistrarProyecto from 'pages/proyectos/RegistrarProyecto';
 import AñadirObjetivos from 'pages/proyectos/AñadirObjetivos';
 
 const httpLink = createHttpLink({
-  uri: 'https://backend-idea2code.herokuapp.com/graphql',
+  uri: `${process.env.REACT_APP_BACKEND}/graphql`,
 });
 
 const authLink = setContext((_, { headers }) => {

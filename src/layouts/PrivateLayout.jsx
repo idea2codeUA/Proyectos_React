@@ -36,7 +36,7 @@ const PrivateLayout = () => {
   if (loadingMutation || loadingAuth) return <div>Loading...</div>;
 
   return (
-    <div className='flex flex-col md:flex-row flex-no-wrap h-screen'>
+    <div className='flex flex-col md:flex-row flex-no-wrap h-screen background_app'>
       <Sidebar />
       <div className='flex w-full h-full'>
         <div className='w-full h-full  overflow-y-scroll'>

@@ -63,8 +63,7 @@ const MiniCard = (props) => {
         return(
         <div>
         <label className="flex text-center justify-center self-center projectCardsFont font-bold">{props.campo}</label>
-        <div className={`border-2 border-indigo-500 bg-indigo-500 m-1 p-1 rounded-md shadow-xl`} onClick={() => {props.openModal()
-        props.setProyectSelected(true)}}>
+        <div className={`border-2 border-indigo-500 bg-indigo-500 m-1 p-1 rounded-md shadow-xl`}>
             <span>{props.item}</span>
         </div>
         </div>
@@ -191,7 +190,7 @@ const ProjectCard = (props) => {
 
     //efectos del modal de fase
     useEffect(() => {
-        if(props.acceptTrigger3 == true && proyectselected == true)
+        if(props.acceptTrigger3 == true && proyectselected == true )
         {
             setFaseProyecto("TERMINADO");
         editEstadoProyecto({
