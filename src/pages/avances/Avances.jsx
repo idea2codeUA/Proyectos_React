@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_AVANCES_PROYECTO } from 'graphql/Avances/queries';
+import { GET_AVANCES_PROYECTO } from 'graphql/avances/queries';
 import { useState } from 'react';
 import TableRowAvance from 'components/TableRowAvance';
 import { useUser } from 'context/userContext';
 import { useNavigate, useParams } from 'react-router-dom'
-import { EDITAR_AVANCE } from 'graphql/Avances/mutations';
+import { EDITAR_AVANCE } from 'graphql/avances/mutations';
 
 const Avances = () => {
 
